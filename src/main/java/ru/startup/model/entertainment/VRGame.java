@@ -3,7 +3,6 @@ package ru.startup.model.entertainment;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
@@ -15,7 +14,6 @@ import java.util.Set;
 @Table(name = "vr_game", schema = "public")
 public class VRGame extends GeneralEntertainment {
 
-    @Column(name = "name")
     private String name;
 
     @ManyToMany(mappedBy = "vrGameSet")

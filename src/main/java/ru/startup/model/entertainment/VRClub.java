@@ -12,7 +12,6 @@ import java.util.Set;
 @Table(name = "vr_club", schema = "public")
 public class VRClub extends GeneralEntertainment {
 
-    @Column(name = "max_players_count")
     private byte maxPlayersCount;
 
     @ManyToMany

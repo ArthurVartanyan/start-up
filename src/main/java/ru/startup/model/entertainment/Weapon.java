@@ -13,7 +13,6 @@ import java.util.Set;
 @Table(name = "weapon", schema = "public")
 public class Weapon extends GeneralEntertainment {
 
-    @Column(name = "name")
     private String name;
 
     @ManyToMany(mappedBy = "weaponSet")
