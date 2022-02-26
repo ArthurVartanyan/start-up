@@ -8,4 +8,7 @@ import lombok.Setter;
 @Setter
 public class BowlingDTO extends GeneralEntertainmentDTO {
 
+    private byte lanesCount;
+
+    private byte linesLimit;
 }
