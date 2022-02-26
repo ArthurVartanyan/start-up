@@ -13,19 +13,26 @@ import java.time.LocalDateTime;
 @Table(name = "general_entertainment", schema = "public")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class GeneralEntertainment {
+
     @Id
     private Long id;
 
+    @Column(name = "phone_number")
     private String phoneNumber;
 
+    @Column(name = "shift_name")
     private String shiftName;
 
+    @Column(name = "start_at")
     private LocalDateTime startAt;
 
+    @Column(name = "end_at")
     private LocalDateTime endAt;
 
+    @Column(name = "entertainment_type")
     private EntertainmentType entertainmentType;
 
+    @Column(name = "price")
     private String price;
 
     private Boolean deleted;
