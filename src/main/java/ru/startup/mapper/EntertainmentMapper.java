@@ -100,6 +100,38 @@ public class EntertainmentMapper extends ConfigurableMapper {
                 .byDefault()
                 .register();
 
+        mapperFactory.classMap(ShootingClub.class, ShootingClubDTO.class)
+                .byDefault()
+                .register();
+
+        mapperFactory.classMap(ShootingClubDTO.class, ShootingClub.class)
+                .byDefault()
+                .register();
+
+        mapperFactory.classMap(VRClub.class, VRClubDTO.class)
+                .byDefault()
+                .register();
+
+        mapperFactory.classMap(VRClubDTO.class, VRClub.class)
+                .byDefault()
+                .register();
+
+        mapperFactory.classMap(WindTunnel.class, WindTunnelDTO.class)
+                .byDefault()
+                .register();
+
+        mapperFactory.classMap(WindTunnelDTO.class, WindTunnel.class)
+                .byDefault()
+                .register();
+
+        mapperFactory.classMap(Zoo.class, ZooDTO.class)
+                .byDefault()
+                .register();
+
+        mapperFactory.classMap(ZooDTO.class, Zoo.class)
+                .byDefault()
+                .register();
+
     }
 
 }
