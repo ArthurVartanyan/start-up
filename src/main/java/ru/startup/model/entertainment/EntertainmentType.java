@@ -1,0 +1,7 @@
+package ru.startup.model.entertainment;
+
+public enum EntertainmentType {
+
+    BATH, BILLIARDS, BOWLING, CLIMBING_WALL, EXTREME, KARAOKE, MASSAGE, MUSEUM, PAINTBALL, PLANETARIUM, POTTERY, QUEST,
+    SHOOTING_CLUB, VR_CLUB, WIND_TUNNEL, ZOO
+}
