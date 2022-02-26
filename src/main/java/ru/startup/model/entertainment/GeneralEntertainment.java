@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 @Table(name = "general_entertainment", schema = "public")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class GeneralEntertainment {
-
     @Id
     private Long id;
 
