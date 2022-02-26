@@ -6,8 +6,3 @@
 /gradlew/
 /gradlew.bat/
 /settings.gradle/
-/.idea/
-/src/main/java/ru/startup/dto/
-/src/main/java/ru/startup/mapper/
-/src/main/java/ru/startup/repository/
-/src/main/java/ru/startup/service/
