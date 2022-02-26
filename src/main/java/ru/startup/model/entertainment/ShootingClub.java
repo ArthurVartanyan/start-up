@@ -12,8 +12,10 @@ import java.util.Set;
 @Table(name = "shooting_club", schema = "public")
 public class ShootingClub extends GeneralEntertainment {
 
+    @Column(name = "firearms")
     private boolean fireArms;
 
+    @Column(name = "airguns")
     private boolean airGuns;
 
     @ManyToMany
