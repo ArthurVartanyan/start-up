@@ -4,8 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.startup.dto.ZooDTO;
 import ru.startup.mapper.EntertainmentMapper;
-import ru.startup.model.entertainment.EntertainmentType;
-import ru.startup.model.entertainment.Zoo;
 import ru.startup.repository.ZooRepository;
 
 @Service
@@ -19,7 +17,6 @@ public class ZooService {
     public void setEntertainmentMapper(EntertainmentMapper entertainmentMapper) {
         this.entertainmentMapper = entertainmentMapper;
     }
-
     @Autowired
     public void setZooRepository(ZooRepository zooRepository) {
         this.zooRepository = zooRepository;
@@ -27,11 +24,5 @@ public class ZooService {
 
     public ZooDTO getZooById(Long id){
         return entertainmentMapper.map(zooRepository.getById(id), ZooDTO.class);
-    }
-
-    public ZooDTO createZoo(ZooDTO zooDTO, EntertainmentType entertainmentType){
-        Zoo zoo = entertainmentMapper.map(zooDTO, Zoo.class);
-        zoo.setEntertainmentType(entertainmentType);
-        return entertainmentMapper.map(zooRepository.save(zoo), ZooDTO.class);
     }
 }

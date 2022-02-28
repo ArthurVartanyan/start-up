@@ -4,8 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.startup.dto.WindTunnelDTO;
 import ru.startup.mapper.EntertainmentMapper;
-import ru.startup.model.entertainment.EntertainmentType;
-import ru.startup.model.entertainment.WindTunnel;
 import ru.startup.repository.WindTunnelRepository;
 
 @Service
@@ -27,11 +25,5 @@ public class WindTunnelService {
 
     public WindTunnelDTO getWindTunnelById(Long id){
         return entertainmentMapper.map(windTunnelRepository.getById(id), WindTunnelDTO.class);
-    }
-
-    public WindTunnelDTO createWindTunnel(WindTunnelDTO windTunnelDTO, EntertainmentType entertainmentType){
-        WindTunnel windTunnel = entertainmentMapper.map(windTunnelDTO, WindTunnel.class);
-        windTunnel.setEntertainmentType(entertainmentType);
-        return entertainmentMapper.map(windTunnelRepository.save(windTunnel), WindTunnelDTO.class);
     }
 }

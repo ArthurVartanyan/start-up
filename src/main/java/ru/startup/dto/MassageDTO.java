@@ -6,7 +6,7 @@ import ru.startup.model.entertainment.MassageType;
 
 @Getter
 @Setter
-public class MassageDTO extends GeneralEntertainmentDTO {
+public class MassageDTO {
 
     private MassageType massageType;
 }
