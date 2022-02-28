@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.startup.dto.BilliardsDTO;
 import ru.startup.mapper.EntertainmentMapper;
 import ru.startup.model.entertainment.Billiards;
+import ru.startup.model.entertainment.EntertainmentType;
 import ru.startup.repository.BilliardsRepository;
 
 @Service
@@ -32,5 +33,11 @@ public class BilliardsService {
         Billiards billiards = billiardsRepository.getById(id);
         billiards.setDeleted(true);
         billiardsRepository.save(billiards);
+    }
+
+    public BilliardsDTO createBilliards(BilliardsDTO billiardsDTO, EntertainmentType entertainmentType) {
+        Billiards billiards = entertainmentMapper.map(billiardsDTO, Billiards.class);
+        billiards.setEntertainmentType(entertainmentType);
+        return entertainmentMapper.map(billiardsRepository.save(billiards), BilliardsDTO.class);
     }
 }

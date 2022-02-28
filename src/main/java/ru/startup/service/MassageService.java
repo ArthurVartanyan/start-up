@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.startup.dto.MassageDTO;
 import ru.startup.mapper.EntertainmentMapper;
+import ru.startup.model.entertainment.EntertainmentType;
+import ru.startup.model.entertainment.Massage;
 import ru.startup.repository.MassageRepository;
 
 @Service
@@ -25,5 +27,11 @@ public class MassageService {
 
     public MassageDTO getMassageById(Long id){
         return entertainmentMapper.map(massageRepository.getById(id), MassageDTO.class);
+    }
+
+    public MassageDTO createMassage(MassageDTO massageDTO, EntertainmentType entertainmentType){
+        Massage massage = entertainmentMapper.map(massageDTO, Massage.class);
+        massage.setEntertainmentType(entertainmentType);
+        return entertainmentMapper.map(massageRepository.save(massage), MassageDTO.class);
     }
 }
