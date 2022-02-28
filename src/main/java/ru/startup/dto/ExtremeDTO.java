@@ -5,5 +5,5 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ExtremeDTO {
+public class ExtremeDTO extends GeneralEntertainmentDTO {
 }
