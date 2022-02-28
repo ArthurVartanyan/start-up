@@ -5,5 +5,5 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class PlanetariumDTO {
+public class PlanetariumDTO extends GeneralEntertainmentDTO {
 }

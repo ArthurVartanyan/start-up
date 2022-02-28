@@ -5,5 +5,5 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class WindTunnelDTO {
+public class WindTunnelDTO extends GeneralEntertainmentDTO {
 }
