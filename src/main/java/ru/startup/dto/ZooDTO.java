@@ -5,5 +5,5 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ZooDTO {
+public class ZooDTO extends GeneralEntertainmentDTO {
 }

@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.startup.dto.BowlingDTO;
 import ru.startup.mapper.EntertainmentMapper;
+import ru.startup.model.entertainment.Bowling;
+import ru.startup.model.entertainment.EntertainmentType;
 import ru.startup.repository.BowlingRepository;
 
 @Service
@@ -23,7 +25,13 @@ public class BowlingService {
         this.entertainmentMapper = entertainmentMapper;
     }
 
-    public BowlingDTO getBowlingsById(Long id){
+    public BowlingDTO getBowlingsById(Long id) {
         return entertainmentMapper.map(bowlingRepository.getById(id), BowlingDTO.class);
+    }
+
+    public BowlingDTO createBowling(BowlingDTO bowlingDTO, EntertainmentType entertainmentType) {
+        Bowling bowling = entertainmentMapper.map(bowlingDTO, Bowling.class);
+        bowling.setEntertainmentType(entertainmentType);
+        return entertainmentMapper.map(bowlingRepository.save(bowling), BowlingDTO.class);
     }
 }

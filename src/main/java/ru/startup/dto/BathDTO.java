@@ -7,6 +7,5 @@ import ru.startup.model.entertainment.BathType;
 @Getter
 @Setter
 public class BathDTO extends GeneralEntertainmentDTO{
-//dasdaads
     private BathType bathType;
 }

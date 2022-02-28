@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.startup.dto.ClimbingWallDTO;
 import ru.startup.mapper.EntertainmentMapper;
+import ru.startup.model.entertainment.ClimbingWall;
+import ru.startup.model.entertainment.EntertainmentType;
 import ru.startup.repository.ClimbingWallRepository;
 
 @Service
@@ -25,5 +27,11 @@ public class ClimbingWallService {
 
     public ClimbingWallDTO getBilliardsById(Long id) {
         return entertainmentMapper.map(climbingWallRepository.getById(id), ClimbingWallDTO.class);
+    }
+
+    public ClimbingWallDTO createClimbingWall(ClimbingWallDTO climbingWallDTO, EntertainmentType entertainmentType){
+        ClimbingWall climbingWall = entertainmentMapper.map(climbingWallDTO, ClimbingWall.class);
+        climbingWall.setEntertainmentType(entertainmentType);
+        return entertainmentMapper.map(climbingWallRepository.save(climbingWall), ClimbingWallDTO.class);
     }
 }

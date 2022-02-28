@@ -5,5 +5,5 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class KaraokeDTO {
+public class KaraokeDTO extends GeneralEntertainmentDTO {
 }
