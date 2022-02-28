@@ -6,7 +6,7 @@ import ru.startup.model.entertainment.PaintBallType;
 
 @Getter
 @Setter
-public class PaintballDTO extends GeneralEntertainmentDTO {
+public class PaintballDTO {
 
     private PaintBallType paintBallType;
 }
