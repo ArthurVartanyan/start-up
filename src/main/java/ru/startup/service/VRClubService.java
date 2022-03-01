@@ -25,11 +25,11 @@ public class VRClubService {
         this.vrClubRepository = vrClubRepository;
     }
 
-    public VRClubDTO getVRClubById(Long id){
+    public VRClubDTO getVRClubById(Long id) {
         return entertainmentMapper.map(vrClubRepository.getById(id), VRClubDTO.class);
     }
 
-    public VRClubDTO createVRClub(VRClubDTO questDTO, EntertainmentType entertainmentType){
+    public VRClubDTO createVRClub(VRClubDTO questDTO, EntertainmentType entertainmentType) {
         VRClub vrClub = entertainmentMapper.map(questDTO, VRClub.class);
         vrClub.setEntertainmentType(entertainmentType);
         return entertainmentMapper.map(vrClubRepository.save(vrClub), VRClubDTO.class);

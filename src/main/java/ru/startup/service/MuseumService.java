@@ -25,11 +25,11 @@ public class MuseumService {
         this.museumRepository = museumRepository;
     }
 
-    public MuseumDTO getMuseumById(Long id){
+    public MuseumDTO getMuseumById(Long id) {
         return entertainmentMapper.map(museumRepository.getById(id), MuseumDTO.class);
     }
 
-    public  MuseumDTO createMuseum( MuseumDTO museumDTO, EntertainmentType entertainmentType){
+    public MuseumDTO createMuseum(MuseumDTO museumDTO, EntertainmentType entertainmentType) {
         Museum museum = entertainmentMapper.map(museumDTO, Museum.class);
         museum.setEntertainmentType(entertainmentType);
         return entertainmentMapper.map(museumRepository.save(museum), MuseumDTO.class);

@@ -25,11 +25,11 @@ public class KaraokeService {
         this.karaokeRepository = karaokeRepository;
     }
 
-    public KaraokeDTO getKaraokeById(Long id){
+    public KaraokeDTO getKaraokeById(Long id) {
         return entertainmentMapper.map(karaokeRepository.getById(id), KaraokeDTO.class);
     }
 
-    public KaraokeDTO createKaraoke(KaraokeDTO karaokeDTO, EntertainmentType entertainmentType){
+    public KaraokeDTO createKaraoke(KaraokeDTO karaokeDTO, EntertainmentType entertainmentType) {
         Karaoke karaoke = entertainmentMapper.map(karaokeDTO, Karaoke.class);
         karaoke.setEntertainmentType(entertainmentType);
         return entertainmentMapper.map(karaokeRepository.save(karaoke), KaraokeDTO.class);

@@ -25,13 +25,13 @@ public class ExtremeService {
         this.extremeRepository = extremeRepository;
     }
 
-    public ExtremeDTO getExtremeById(Long id){
+    public ExtremeDTO getExtremeById(Long id) {
         return entertainmentMapper.map(extremeRepository.getById(id), ExtremeDTO.class);
     }
 
-    public ExtremeDTO createExtreme(ExtremeDTO extremeDTO, EntertainmentType entertainmentType){
+    public ExtremeDTO createExtreme(ExtremeDTO extremeDTO, EntertainmentType entertainmentType) {
         Extreme extreme = entertainmentMapper.map(extremeDTO, Extreme.class);
         extreme.setEntertainmentType(entertainmentType);
-        return entertainmentMapper.map(extremeRepository.save(extreme),ExtremeDTO.class);
+        return entertainmentMapper.map(extremeRepository.save(extreme), ExtremeDTO.class);
     }
 }

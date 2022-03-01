@@ -25,11 +25,11 @@ public class ZooService {
         this.zooRepository = zooRepository;
     }
 
-    public ZooDTO getZooById(Long id){
+    public ZooDTO getZooById(Long id) {
         return entertainmentMapper.map(zooRepository.getById(id), ZooDTO.class);
     }
 
-    public ZooDTO createZoo(ZooDTO zooDTO, EntertainmentType entertainmentType){
+    public ZooDTO createZoo(ZooDTO zooDTO, EntertainmentType entertainmentType) {
         Zoo zoo = entertainmentMapper.map(zooDTO, Zoo.class);
         zoo.setEntertainmentType(entertainmentType);
         return entertainmentMapper.map(zooRepository.save(zoo), ZooDTO.class);

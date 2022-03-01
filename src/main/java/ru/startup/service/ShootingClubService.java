@@ -25,11 +25,11 @@ public class ShootingClubService {
         this.shootingClubRepository = shootingClubRepository;
     }
 
-    public ShootingClubDTO getShootingClubById(Long id){
+    public ShootingClubDTO getShootingClubById(Long id) {
         return entertainmentMapper.map(shootingClubRepository.getById(id), ShootingClubDTO.class);
     }
 
-    public ShootingClubDTO createShootingClub(ShootingClubDTO shootingClubDTO, EntertainmentType entertainmentType){
+    public ShootingClubDTO createShootingClub(ShootingClubDTO shootingClubDTO, EntertainmentType entertainmentType) {
         ShootingClub shootingClub = entertainmentMapper.map(shootingClubDTO, ShootingClub.class);
         shootingClub.setEntertainmentType(entertainmentType);
         return entertainmentMapper.map(shootingClubRepository.save(shootingClub), ShootingClubDTO.class);

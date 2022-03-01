@@ -29,7 +29,7 @@ public class ClimbingWallService {
         return entertainmentMapper.map(climbingWallRepository.getById(id), ClimbingWallDTO.class);
     }
 
-    public ClimbingWallDTO createClimbingWall(ClimbingWallDTO climbingWallDTO, EntertainmentType entertainmentType){
+    public ClimbingWallDTO createClimbingWall(ClimbingWallDTO climbingWallDTO, EntertainmentType entertainmentType) {
         ClimbingWall climbingWall = entertainmentMapper.map(climbingWallDTO, ClimbingWall.class);
         climbingWall.setEntertainmentType(entertainmentType);
         return entertainmentMapper.map(climbingWallRepository.save(climbingWall), ClimbingWallDTO.class);

@@ -25,11 +25,11 @@ public class PotteryService {
         this.potteryRepository = potteryRepository;
     }
 
-    public PotteryDTO getPotteryById(Long id){
+    public PotteryDTO getPotteryById(Long id) {
         return entertainmentMapper.map(potteryRepository.getById(id), PotteryDTO.class);
     }
 
-    public PotteryDTO createPottery(PotteryDTO potteryDTO, EntertainmentType entertainmentType){
+    public PotteryDTO createPottery(PotteryDTO potteryDTO, EntertainmentType entertainmentType) {
         Pottery pottery = entertainmentMapper.map(potteryDTO, Pottery.class);
         pottery.setEntertainmentType(entertainmentType);
         return entertainmentMapper.map(potteryRepository.save(pottery), PotteryDTO.class);

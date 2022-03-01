@@ -25,11 +25,11 @@ public class PlanetariumService {
         this.planetariumRepository = planetariumRepository;
     }
 
-    public PlanetariumDTO getPlanetariumById(Long id){
+    public PlanetariumDTO getPlanetariumById(Long id) {
         return entertainmentMapper.map(planetariumRepository.getById(id), PlanetariumDTO.class);
     }
 
-    public PlanetariumDTO createPlanetarium(PlanetariumDTO planetariumDTO, EntertainmentType entertainmentType){
+    public PlanetariumDTO createPlanetarium(PlanetariumDTO planetariumDTO, EntertainmentType entertainmentType) {
         Planetarium planetarium = entertainmentMapper.map(planetariumDTO, Planetarium.class);
         planetarium.setEntertainmentType(entertainmentType);
         return entertainmentMapper.map(planetariumRepository.save(planetarium), PlanetariumDTO.class);

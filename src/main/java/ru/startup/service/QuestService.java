@@ -25,11 +25,11 @@ public class QuestService {
         this.questRepository = questRepository;
     }
 
-    public QuestDTO getQuestById(Long id){
+    public QuestDTO getQuestById(Long id) {
         return entertainmentMapper.map(questRepository.getById(id), QuestDTO.class);
     }
 
-    public QuestDTO createQuest(QuestDTO questDTO, EntertainmentType entertainmentType){
+    public QuestDTO createQuest(QuestDTO questDTO, EntertainmentType entertainmentType) {
         Quest quest = entertainmentMapper.map(questDTO, Quest.class);
         quest.setEntertainmentType(entertainmentType);
         return entertainmentMapper.map(questRepository.save(quest), QuestDTO.class);

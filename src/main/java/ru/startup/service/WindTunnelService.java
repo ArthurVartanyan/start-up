@@ -25,11 +25,11 @@ public class WindTunnelService {
         this.windTunnelRepository = windTunnelRepository;
     }
 
-    public WindTunnelDTO getWindTunnelById(Long id){
+    public WindTunnelDTO getWindTunnelById(Long id) {
         return entertainmentMapper.map(windTunnelRepository.getById(id), WindTunnelDTO.class);
     }
 
-    public WindTunnelDTO createWindTunnel(WindTunnelDTO windTunnelDTO, EntertainmentType entertainmentType){
+    public WindTunnelDTO createWindTunnel(WindTunnelDTO windTunnelDTO, EntertainmentType entertainmentType) {
         WindTunnel windTunnel = entertainmentMapper.map(windTunnelDTO, WindTunnel.class);
         windTunnel.setEntertainmentType(entertainmentType);
         return entertainmentMapper.map(windTunnelRepository.save(windTunnel), WindTunnelDTO.class);

@@ -25,11 +25,11 @@ public class MassageService {
         this.entertainmentMapper = entertainmentMapper;
     }
 
-    public MassageDTO getMassageById(Long id){
+    public MassageDTO getMassageById(Long id) {
         return entertainmentMapper.map(massageRepository.getById(id), MassageDTO.class);
     }
 
-    public MassageDTO createMassage(MassageDTO massageDTO, EntertainmentType entertainmentType){
+    public MassageDTO createMassage(MassageDTO massageDTO, EntertainmentType entertainmentType) {
         Massage massage = entertainmentMapper.map(massageDTO, Massage.class);
         massage.setEntertainmentType(entertainmentType);
         return entertainmentMapper.map(massageRepository.save(massage), MassageDTO.class);

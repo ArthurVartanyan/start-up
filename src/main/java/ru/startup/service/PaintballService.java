@@ -25,11 +25,11 @@ public class PaintballService {
         this.paintballRepository = paintballRepository;
     }
 
-    public PaintballDTO getPaintballById(Long id){
+    public PaintballDTO getPaintballById(Long id) {
         return entertainmentMapper.map(paintballRepository.getById(id), PaintballDTO.class);
     }
 
-    public PaintballDTO createPaintball(PaintballDTO paintballDTO, EntertainmentType entertainmentType){
+    public PaintballDTO createPaintball(PaintballDTO paintballDTO, EntertainmentType entertainmentType) {
         Paintball paintball = entertainmentMapper.map(paintballDTO, Paintball.class);
         paintball.setEntertainmentType(entertainmentType);
         return entertainmentMapper.map(paintballRepository.save(paintball), PaintballDTO.class);
