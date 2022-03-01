@@ -29,6 +29,12 @@ public class BowlingService {
         return entertainmentMapper.map(bowlingRepository.getById(id), BowlingDTO.class);
     }
 
+    public void deleteBowlingsById(Long id) {
+        Bowling bowling = bowlingRepository.getById(id);
+        bowling.setDeleted(true);
+        bowlingRepository.save(bowling);
+    }
+
     public BowlingDTO createBowling(BowlingDTO bowlingDTO, EntertainmentType entertainmentType) {
         Bowling bowling = entertainmentMapper.map(bowlingDTO, Bowling.class);
         bowling.setEntertainmentType(entertainmentType);
