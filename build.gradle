@@ -20,4 +20,5 @@ dependencies {
 
     implementation group: 'ma.glasnost.orika', name: 'orika-core', version: '1.5.4'
 
+    implementation group: 'org.flywaydb', name: 'flyway-core', version: '8.5.1'
 }
