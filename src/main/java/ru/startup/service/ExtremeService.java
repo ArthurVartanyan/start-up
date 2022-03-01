@@ -29,6 +29,12 @@ public class ExtremeService {
         return entertainmentMapper.map(extremeRepository.getById(id), ExtremeDTO.class);
     }
 
+    public void deleteExtremeById(Long id) {
+        Extreme extreme = extremeRepository.getById(id);
+        extreme.setDeleted(true);
+        extremeRepository.save(extreme);
+    }
+
     public ExtremeDTO createExtreme(ExtremeDTO extremeDTO, EntertainmentType entertainmentType) {
         Extreme extreme = entertainmentMapper.map(extremeDTO, Extreme.class);
         extreme.setEntertainmentType(entertainmentType);

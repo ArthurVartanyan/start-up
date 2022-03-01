@@ -29,6 +29,12 @@ public class KaraokeService {
         return entertainmentMapper.map(karaokeRepository.getById(id), KaraokeDTO.class);
     }
 
+    public void deleteKaraokeById(Long id) {
+        Karaoke karaoke = karaokeRepository.getById(id);
+        karaoke.setDeleted(true);
+        karaokeRepository.save(karaoke);
+    }
+
     public KaraokeDTO createKaraoke(KaraokeDTO karaokeDTO, EntertainmentType entertainmentType) {
         Karaoke karaoke = entertainmentMapper.map(karaokeDTO, Karaoke.class);
         karaoke.setEntertainmentType(entertainmentType);

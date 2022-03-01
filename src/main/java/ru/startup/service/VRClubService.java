@@ -29,6 +29,12 @@ public class VRClubService {
         return entertainmentMapper.map(vrClubRepository.getById(id), VRClubDTO.class);
     }
 
+    public void deleteVRClubById(Long id) {
+        VRClub vrClub = vrClubRepository.getById(id);
+        vrClub.setDeleted(true);
+        vrClubRepository.save(vrClub);
+    }
+
     public VRClubDTO createVRClub(VRClubDTO questDTO, EntertainmentType entertainmentType) {
         VRClub vrClub = entertainmentMapper.map(questDTO, VRClub.class);
         vrClub.setEntertainmentType(entertainmentType);

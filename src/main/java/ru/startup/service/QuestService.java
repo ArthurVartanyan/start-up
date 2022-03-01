@@ -29,6 +29,12 @@ public class QuestService {
         return entertainmentMapper.map(questRepository.getById(id), QuestDTO.class);
     }
 
+    public void deleteQuestById(Long id) {
+        Quest quest = questRepository.getById(id);
+        quest.setDeleted(true);
+        questRepository.save(quest);
+    }
+
     public QuestDTO createQuest(QuestDTO questDTO, EntertainmentType entertainmentType) {
         Quest quest = entertainmentMapper.map(questDTO, Quest.class);
         quest.setEntertainmentType(entertainmentType);

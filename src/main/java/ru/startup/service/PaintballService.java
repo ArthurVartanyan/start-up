@@ -29,6 +29,12 @@ public class PaintballService {
         return entertainmentMapper.map(paintballRepository.getById(id), PaintballDTO.class);
     }
 
+    public void deletePaintballById(Long id) {
+        Paintball paintball = paintballRepository.getById(id);
+        paintball.setDeleted(true);
+        paintballRepository.save(paintball);
+    }
+
     public PaintballDTO createPaintball(PaintballDTO paintballDTO, EntertainmentType entertainmentType) {
         Paintball paintball = entertainmentMapper.map(paintballDTO, Paintball.class);
         paintball.setEntertainmentType(entertainmentType);

@@ -29,6 +29,12 @@ public class MassageService {
         return entertainmentMapper.map(massageRepository.getById(id), MassageDTO.class);
     }
 
+    public void deleteMassageById(Long id) {
+        Massage massage = massageRepository.getById(id);
+        massage.setDeleted(true);
+        massageRepository.save(massage);
+    }
+
     public MassageDTO createMassage(MassageDTO massageDTO, EntertainmentType entertainmentType) {
         Massage massage = entertainmentMapper.map(massageDTO, Massage.class);
         massage.setEntertainmentType(entertainmentType);

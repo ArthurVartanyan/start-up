@@ -29,6 +29,12 @@ public class PlanetariumService {
         return entertainmentMapper.map(planetariumRepository.getById(id), PlanetariumDTO.class);
     }
 
+    public void deletePlanetariumById(Long id) {
+        Planetarium planetarium = planetariumRepository.getById(id);
+        planetarium.setDeleted(true);
+        planetariumRepository.save(planetarium);
+    }
+
     public PlanetariumDTO createPlanetarium(PlanetariumDTO planetariumDTO, EntertainmentType entertainmentType) {
         Planetarium planetarium = entertainmentMapper.map(planetariumDTO, Planetarium.class);
         planetarium.setEntertainmentType(entertainmentType);
