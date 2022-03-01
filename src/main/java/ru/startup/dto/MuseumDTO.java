@@ -6,7 +6,7 @@ import ru.startup.model.entertainment.MuseumTheme;
 
 @Getter
 @Setter
-public class MuseumDTO {
+public class MuseumDTO extends GeneralEntertainmentDTO {
 
     private MuseumTheme museumTheme;
 }
