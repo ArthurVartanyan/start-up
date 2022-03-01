@@ -30,10 +30,12 @@ public class GeneralEntertainment {
     private LocalDateTime endAt;
 
     @Column(name = "entertainment_type")
+    @Enumerated(EnumType.STRING)
     private EntertainmentType entertainmentType;
 
     @Column(name = "price")
     private String price;
 
+    @Column(name = "deleted")
     private Boolean deleted;
 }
