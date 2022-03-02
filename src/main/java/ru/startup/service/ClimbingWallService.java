@@ -29,6 +29,12 @@ public class ClimbingWallService {
         return entertainmentMapper.map(climbingWallRepository.getById(id), ClimbingWallDTO.class);
     }
 
+    public void deleteClimbingWallById(Long id) {
+        ClimbingWall climbingWall = climbingWallRepository.getById(id);
+        climbingWall.setDeleted(true);
+        climbingWallRepository.save(climbingWall);
+    }
+
     public ClimbingWallDTO createClimbingWall(ClimbingWallDTO climbingWallDTO, EntertainmentType entertainmentType) {
         ClimbingWall climbingWall = entertainmentMapper.map(climbingWallDTO, ClimbingWall.class);
         climbingWall.setEntertainmentType(entertainmentType);

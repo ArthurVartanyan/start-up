@@ -29,6 +29,12 @@ public class ZooService {
         return entertainmentMapper.map(zooRepository.getById(id), ZooDTO.class);
     }
 
+    public void deleteZooById(Long id) {
+        Zoo zoo = zooRepository.getById(id);
+        zoo.setDeleted(true);
+        zooRepository.save(zoo);
+    }
+
     public ZooDTO createZoo(ZooDTO zooDTO, EntertainmentType entertainmentType) {
         Zoo zoo = entertainmentMapper.map(zooDTO, Zoo.class);
         zoo.setEntertainmentType(entertainmentType);

@@ -29,6 +29,12 @@ public class ShootingClubService {
         return entertainmentMapper.map(shootingClubRepository.getById(id), ShootingClubDTO.class);
     }
 
+    public void deleteShootingClubById(Long id) {
+        ShootingClub shootingClub = shootingClubRepository.getById(id);
+        shootingClub.setDeleted(true);
+        shootingClubRepository.save(shootingClub);
+    }
+
     public ShootingClubDTO createShootingClub(ShootingClubDTO shootingClubDTO, EntertainmentType entertainmentType) {
         ShootingClub shootingClub = entertainmentMapper.map(shootingClubDTO, ShootingClub.class);
         shootingClub.setEntertainmentType(entertainmentType);

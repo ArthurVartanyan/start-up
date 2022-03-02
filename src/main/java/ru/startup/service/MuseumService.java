@@ -29,6 +29,12 @@ public class MuseumService {
         return entertainmentMapper.map(museumRepository.getById(id), MuseumDTO.class);
     }
 
+    public void deleteMuseumById(Long id) {
+        Museum museum = museumRepository.getById(id);
+        museum.setDeleted(true);
+        museumRepository.save(museum);
+    }
+
     public MuseumDTO createMuseum(MuseumDTO museumDTO, EntertainmentType entertainmentType) {
         Museum museum = entertainmentMapper.map(museumDTO, Museum.class);
         museum.setEntertainmentType(entertainmentType);
