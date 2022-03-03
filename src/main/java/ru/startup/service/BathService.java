@@ -26,7 +26,7 @@ public class BathService {
     }
 
     public BathDTO getBathById(Long id) {
-        return entertainmentMapper.map(bathRepository.getById(id), BathDTO.class);
+        return entertainmentMapper.map(bathRepository.getBathByIdAndDeletedIsFalse(id), BathDTO.class);
     }
 
     public void deleteBathById(Long id) {

@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 public class GeneralEntertainment {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "phone_number")

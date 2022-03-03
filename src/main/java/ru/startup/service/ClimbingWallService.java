@@ -25,7 +25,7 @@ public class ClimbingWallService {
         this.climbingWallRepository = climbingWallRepository;
     }
 
-    public ClimbingWallDTO getBilliardsById(Long id) {
+    public ClimbingWallDTO getClimbingWallById(Long id) {
         return entertainmentMapper.map(climbingWallRepository.getById(id), ClimbingWallDTO.class);
     }
 
