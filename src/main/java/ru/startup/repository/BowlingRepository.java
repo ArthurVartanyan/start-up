@@ -6,4 +6,6 @@ import ru.startup.model.entertainment.Bowling;
 
 @Repository
 public interface BowlingRepository extends JpaRepository<Bowling, Long> {
+
+    Bowling getBowlingByIdAndDeletedIsFalse(Long id);
 }

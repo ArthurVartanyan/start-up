@@ -6,4 +6,6 @@ import ru.startup.model.entertainment.WindTunnel;
 
 @Repository
 public interface WindTunnelRepository extends JpaRepository<WindTunnel, Long> {
+
+    WindTunnel getWindTunnelByIdAndDeletedIsFalse(Long id);
 }

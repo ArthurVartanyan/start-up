@@ -6,4 +6,6 @@ import ru.startup.model.entertainment.Karaoke;
 
 @Repository
 public interface KaraokeRepository extends JpaRepository<Karaoke, Long> {
+
+    Karaoke getKaraokeByIdAndDeletedIsFalse(Long id);
 }

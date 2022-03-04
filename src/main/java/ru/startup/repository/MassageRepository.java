@@ -6,4 +6,6 @@ import ru.startup.model.entertainment.Massage;
 
 @Repository
 public interface MassageRepository extends JpaRepository<Massage, Long> {
+
+    Massage getMassageByIdAndDeletedIsFalse(Long id);
 }

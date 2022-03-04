@@ -26,7 +26,7 @@ public class ZooService {
     }
 
     public ZooDTO getZooById(Long id) {
-        return entertainmentMapper.map(zooRepository.getById(id), ZooDTO.class);
+        return entertainmentMapper.map(zooRepository.getZooByIdAndDeletedIsFalse(id), ZooDTO.class);
     }
 
     public void deleteZooById(Long id) {

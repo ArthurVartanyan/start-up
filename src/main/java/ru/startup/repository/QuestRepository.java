@@ -7,5 +7,5 @@ import ru.startup.model.entertainment.Quest;
 @Repository
 public interface QuestRepository extends JpaRepository<Quest, Long> {
 
-
+    Quest getQuestByIdAndDeletedIsFalse(Long id);
 }

@@ -26,7 +26,7 @@ public class PaintballService {
     }
 
     public PaintballDTO getPaintballById(Long id) {
-        return entertainmentMapper.map(paintballRepository.getById(id), PaintballDTO.class);
+        return entertainmentMapper.map(paintballRepository.getPaintballByIdAndDeletedIsFalse(id), PaintballDTO.class);
     }
 
     public void deletePaintballById(Long id) {

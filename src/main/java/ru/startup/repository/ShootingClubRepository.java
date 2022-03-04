@@ -6,4 +6,6 @@ import ru.startup.model.entertainment.ShootingClub;
 
 @Repository
 public interface ShootingClubRepository extends JpaRepository<ShootingClub, Long> {
+
+    ShootingClub getShootingClubByIdAndDeletedIsFalse(Long id);
 }

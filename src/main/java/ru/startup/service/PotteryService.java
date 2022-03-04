@@ -26,7 +26,7 @@ public class PotteryService {
     }
 
     public PotteryDTO getPotteryById(Long id) {
-        return entertainmentMapper.map(potteryRepository.getById(id), PotteryDTO.class);
+        return entertainmentMapper.map(potteryRepository.getPotteryByIdAndDeletedIsFalse(id), PotteryDTO.class);
     }
 
     public void deletePotteryById(Long id) {

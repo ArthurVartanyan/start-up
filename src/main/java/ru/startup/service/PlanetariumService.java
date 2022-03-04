@@ -26,7 +26,7 @@ public class PlanetariumService {
     }
 
     public PlanetariumDTO getPlanetariumById(Long id) {
-        return entertainmentMapper.map(planetariumRepository.getById(id), PlanetariumDTO.class);
+        return entertainmentMapper.map(planetariumRepository.getPlanetariumByIdAndDeletedIsFalse(id), PlanetariumDTO.class);
     }
 
     public void deletePlanetariumById(Long id) {

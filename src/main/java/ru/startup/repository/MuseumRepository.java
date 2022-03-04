@@ -7,4 +7,5 @@ import ru.startup.model.entertainment.Museum;
 @Repository
 public interface MuseumRepository extends JpaRepository<Museum, Long> {
 
+    Museum getMuseumByIdAndDeletedIsFalse(Long id);
 }

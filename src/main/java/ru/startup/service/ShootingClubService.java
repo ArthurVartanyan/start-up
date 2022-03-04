@@ -26,7 +26,7 @@ public class ShootingClubService {
     }
 
     public ShootingClubDTO getShootingClubById(Long id) {
-        return entertainmentMapper.map(shootingClubRepository.getById(id), ShootingClubDTO.class);
+        return entertainmentMapper.map(shootingClubRepository.getShootingClubByIdAndDeletedIsFalse(id), ShootingClubDTO.class);
     }
 
     public void deleteShootingClubById(Long id) {

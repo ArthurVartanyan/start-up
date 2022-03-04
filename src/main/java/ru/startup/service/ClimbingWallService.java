@@ -26,7 +26,7 @@ public class ClimbingWallService {
     }
 
     public ClimbingWallDTO getClimbingWallById(Long id) {
-        return entertainmentMapper.map(climbingWallRepository.getById(id), ClimbingWallDTO.class);
+        return entertainmentMapper.map(climbingWallRepository.getClimbingWallByIdAndDeletedIsFalse(id), ClimbingWallDTO.class);
     }
 
     public void deleteClimbingWallById(Long id) {

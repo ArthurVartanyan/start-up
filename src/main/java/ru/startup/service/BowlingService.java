@@ -26,7 +26,7 @@ public class BowlingService {
     }
 
     public BowlingDTO getBowlingById(Long id) {
-        return entertainmentMapper.map(bowlingRepository.getById(id), BowlingDTO.class);
+        return entertainmentMapper.map(bowlingRepository.getBowlingByIdAndDeletedIsFalse(id), BowlingDTO.class);
     }
 
     public void deleteBowlingById(Long id) {
