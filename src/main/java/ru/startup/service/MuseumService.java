@@ -26,7 +26,7 @@ public class MuseumService {
     }
 
     public MuseumDTO getMuseumById(Long id) {
-        return entertainmentMapper.map(museumRepository.getById(id), MuseumDTO.class);
+        return entertainmentMapper.map(museumRepository.getMuseumByIdAndDeletedIsFalse(id), MuseumDTO.class);
     }
 
     public void deleteMuseumById(Long id) {

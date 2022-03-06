@@ -26,7 +26,7 @@ public class KaraokeService {
     }
 
     public KaraokeDTO getKaraokeById(Long id) {
-        return entertainmentMapper.map(karaokeRepository.getById(id), KaraokeDTO.class);
+        return entertainmentMapper.map(karaokeRepository.getKaraokeByIdAndDeletedIsFalse(id), KaraokeDTO.class);
     }
 
     public void deleteKaraokeById(Long id) {

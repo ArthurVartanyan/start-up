@@ -26,7 +26,7 @@ public class QuestService {
     }
 
     public QuestDTO getQuestById(Long id) {
-        return entertainmentMapper.map(questRepository.getById(id), QuestDTO.class);
+        return entertainmentMapper.map(questRepository.getQuestByIdAndDeletedIsFalse(id), QuestDTO.class);
     }
 
     public void deleteQuestById(Long id) {

@@ -26,7 +26,7 @@ public class ExtremeService {
     }
 
     public ExtremeDTO getExtremeById(Long id) {
-        return entertainmentMapper.map(extremeRepository.getById(id), ExtremeDTO.class);
+        return entertainmentMapper.map(extremeRepository.getExtremeByIdAndDeletedIsFalse(id), ExtremeDTO.class);
     }
 
     public void deleteExtremeById(Long id) {

@@ -26,7 +26,7 @@ public class MassageService {
     }
 
     public MassageDTO getMassageById(Long id) {
-        return entertainmentMapper.map(massageRepository.getById(id), MassageDTO.class);
+        return entertainmentMapper.map(massageRepository.getMassageByIdAndDeletedIsFalse(id), MassageDTO.class);
     }
 
     public void deleteMassageById(Long id) {

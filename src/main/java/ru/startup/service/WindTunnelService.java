@@ -26,7 +26,7 @@ public class WindTunnelService {
     }
 
     public WindTunnelDTO getWindTunnelById(Long id) {
-        return entertainmentMapper.map(windTunnelRepository.getById(id), WindTunnelDTO.class);
+        return entertainmentMapper.map(windTunnelRepository.getWindTunnelByIdAndDeletedIsFalse(id), WindTunnelDTO.class);
     }
 
     public void deleteWindTunnelById(Long id) {
