@@ -35,6 +35,10 @@ public class QuestService {
         questRepository.save(quest);
     }
 
+    public boolean existsById(Long id){
+        return questRepository.existsById(id);
+    }
+
     public QuestDTO createQuest(QuestDTO questDTO, EntertainmentType entertainmentType) {
         Quest quest = entertainmentMapper.map(questDTO, Quest.class);
         quest.setEntertainmentType(entertainmentType);

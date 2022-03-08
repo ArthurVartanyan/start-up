@@ -35,6 +35,10 @@ public class BowlingService {
         bowlingRepository.save(bowling);
     }
 
+    public boolean existsById(Long id){
+        return bowlingRepository.existsById(id);
+    }
+
     public BowlingDTO createBowling(BowlingDTO bowlingDTO, EntertainmentType entertainmentType) {
         Bowling bowling = entertainmentMapper.map(bowlingDTO, Bowling.class);
         bowling.setEntertainmentType(entertainmentType);

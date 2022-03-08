@@ -1,6 +1,8 @@
 package ru.startup.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.startup.dto.ClimbingWallDTO;
 import ru.startup.model.entertainment.EntertainmentType;
@@ -17,13 +19,20 @@ public class ClimbingWallController {
     }
 
     @GetMapping("/api/climbing-wall/{id}")
-    public ClimbingWallDTO getClimbingWallById(@PathVariable Long id){
-        return climbingWallService.getClimbingWallById(id);
+    public ResponseEntity<ClimbingWallDTO> getClimbingWallById(@PathVariable Long id){
+        if (!climbingWallService.existsById(id)){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(climbingWallService.getClimbingWallById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/api/climbing-wall/{id}")
-    public void deleteClimbingWallById(@PathVariable Long id){
+    public ResponseEntity<Void> deleteClimbingWallById(@PathVariable Long id){
+        if (!climbingWallService.existsById(id)){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         climbingWallService.deleteClimbingWallById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/api/climbing-wall")

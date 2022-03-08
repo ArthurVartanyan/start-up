@@ -35,6 +35,10 @@ public class WindTunnelService {
         windTunnelRepository.save(windTunnel);
     }
 
+    public boolean existsById(Long id){
+        return windTunnelRepository.existsById(id);
+    }
+
     public WindTunnelDTO createWindTunnel(WindTunnelDTO windTunnelDTO, EntertainmentType entertainmentType) {
         WindTunnel windTunnel = entertainmentMapper.map(windTunnelDTO, WindTunnel.class);
         windTunnel.setEntertainmentType(entertainmentType);

@@ -1,6 +1,8 @@
 package ru.startup.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.startup.dto.MassageDTO;
 import ru.startup.model.entertainment.EntertainmentType;
@@ -17,13 +19,20 @@ public class MassageController {
     }
 
     @GetMapping("/api/massage/{id}")
-    public MassageDTO getMassageById(@PathVariable Long id){
-        return massageService.getMassageById(id);
+    public ResponseEntity<MassageDTO> getMassageById(@PathVariable Long id){
+        if (!massageService.existsById(id)){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(massageService.getMassageById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/api/massage/{id}")
-    public void deleteMassageById(@PathVariable Long id){
+    public ResponseEntity<Void> deleteMassageById(@PathVariable Long id){
+        if (!massageService.existsById(id)){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         massageService.deleteMassageById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/api/massage")

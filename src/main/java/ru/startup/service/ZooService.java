@@ -35,6 +35,10 @@ public class ZooService {
         zooRepository.save(zoo);
     }
 
+    public boolean existsById(Long id){
+        return zooRepository.existsById(id);
+    }
+
     public ZooDTO createZoo(ZooDTO zooDTO, EntertainmentType entertainmentType) {
         Zoo zoo = entertainmentMapper.map(zooDTO, Zoo.class);
         zoo.setEntertainmentType(entertainmentType);

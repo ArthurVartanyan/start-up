@@ -1,6 +1,8 @@
 package ru.startup.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.startup.dto.PlanetariumDTO;
 import ru.startup.model.entertainment.EntertainmentType;
@@ -17,13 +19,20 @@ public class PlanetariumController {
     }
 
     @GetMapping("/api/planetarium/{id}")
-    public PlanetariumDTO getPaintballById(@PathVariable Long id){
-        return planetariumService.getPlanetariumById(id);
+    public ResponseEntity<PlanetariumDTO> getPaintballById(@PathVariable Long id){
+        if (!planetariumService.existsById(id)){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(planetariumService.getPlanetariumById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/api/planetarium/{id}")
-    public void deletePlanetariumById(@PathVariable Long id){
+    public ResponseEntity<Void> deletePlanetariumById(@PathVariable Long id){
+        if (!planetariumService.existsById(id)){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         planetariumService.deletePlanetariumById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/api/planetarium")

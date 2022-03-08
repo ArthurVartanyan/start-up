@@ -35,6 +35,10 @@ public class BilliardsService {
         billiardsRepository.save(billiards);
     }
 
+    public boolean existsById(Long id){
+        return billiardsRepository.existsById(id);
+    }
+
     public BilliardsDTO createBilliards(BilliardsDTO billiardsDTO, EntertainmentType entertainmentType) {
         Billiards billiards = entertainmentMapper.map(billiardsDTO, Billiards.class);
         billiards.setEntertainmentType(entertainmentType);

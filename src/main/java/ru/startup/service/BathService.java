@@ -35,6 +35,10 @@ public class BathService {
         bathRepository.save(bath);
     }
 
+    public boolean existsById(Long id){
+        return bathRepository.existsById(id);
+    }
+
     public BathDTO createBath(BathDTO bathDTO, EntertainmentType entertainmentType) {
         Bath bath = entertainmentMapper.map(bathDTO, Bath.class);
         bath.setEntertainmentType(entertainmentType);

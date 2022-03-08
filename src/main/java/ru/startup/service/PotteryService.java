@@ -35,6 +35,10 @@ public class PotteryService {
         potteryRepository.save(pottery);
     }
 
+    public boolean existsById(Long id){
+        return potteryRepository.existsById(id);
+    }
+
     public PotteryDTO createPottery(PotteryDTO potteryDTO, EntertainmentType entertainmentType) {
         Pottery pottery = entertainmentMapper.map(potteryDTO, Pottery.class);
         pottery.setEntertainmentType(entertainmentType);

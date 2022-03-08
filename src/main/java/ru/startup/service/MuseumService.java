@@ -35,6 +35,10 @@ public class MuseumService {
         museumRepository.save(museum);
     }
 
+    public boolean existsById(Long id){
+        return museumRepository.existsById(id);
+    }
+
     public MuseumDTO createMuseum(MuseumDTO museumDTO, EntertainmentType entertainmentType) {
         Museum museum = entertainmentMapper.map(museumDTO, Museum.class);
         museum.setEntertainmentType(entertainmentType);

@@ -1,6 +1,8 @@
 package ru.startup.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.startup.dto.KaraokeDTO;
 import ru.startup.model.entertainment.EntertainmentType;
@@ -17,13 +19,20 @@ public class KaraokeController {
     }
 
     @GetMapping("/api/karaoke/{id}")
-    public KaraokeDTO getKaraokeById(@PathVariable  Long id){
-        return karaokeService.getKaraokeById(id);
+    public ResponseEntity<KaraokeDTO> getKaraokeById(@PathVariable  Long id){
+        if (!karaokeService.existsById(id)){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(karaokeService.getKaraokeById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/api/karaoke/{id}")
-    public void deleteKaraokeById(@PathVariable Long id){
+    public ResponseEntity<Void> deleteKaraokeById(@PathVariable Long id){
+        if (!karaokeService.existsById(id)){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         karaokeService.deleteKaraokeById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/api/karaoke")

@@ -1,6 +1,8 @@
 package ru.startup.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.startup.dto.BathDTO;
 import ru.startup.model.entertainment.EntertainmentType;
@@ -17,17 +19,24 @@ public class BathController {
     }
 
     @GetMapping("/api/bath/{id}")
-    public BathDTO getBathById(@PathVariable Long id){
-        return bathService.getBathById(id);
+    public ResponseEntity<BathDTO> getBathById(@PathVariable Long id) {
+        if (!bathService.existsById(id)){
+           return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(bathService.getBathById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/api/bath/{id}")
-    public void deleteBathById(@PathVariable Long id){
+    public ResponseEntity<Void> deleteBathById(@PathVariable Long id) {
+        if (!bathService.existsById(id)){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         bathService.deleteBathById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/api/bath")
-    public BathDTO createBath(@RequestBody BathDTO bathDTO,@RequestParam EntertainmentType entertainmentType){
+    public BathDTO createBath(@RequestBody BathDTO bathDTO, @RequestParam EntertainmentType entertainmentType) {
         return bathService.createBath(bathDTO, entertainmentType);
     }
 }
