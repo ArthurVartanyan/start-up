@@ -1,4 +1,4 @@
-package ru.startup.controllers;
+package ru.startup.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,24 +19,24 @@ public class BilliardsController {
     }
 
     @GetMapping("/api/billiards/{id}")
-    public ResponseEntity<BilliardsDTO> getBilliardsById(@PathVariable Long id){
-        if (!billiardsService.existsById(id)){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    public ResponseEntity<BilliardsDTO> getBilliardsById(@PathVariable Long id) {
+        if (!billiardsService.existsById(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(billiardsService.getBilliardsById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/api/billiards/{id}")
-    public ResponseEntity<Void> deleteBilliardsById(@PathVariable Long id){
-        if (!billiardsService.existsById(id)){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    public ResponseEntity<Void> deleteBilliardsById(@PathVariable Long id) {
+        if (!billiardsService.existsById(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         billiardsService.deleteBilliardsById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/api/billiards")
-    public BilliardsDTO createBilliards(@RequestBody BilliardsDTO billiardsDTO,@RequestParam EntertainmentType entertainmentType){
+    public BilliardsDTO createBilliards(@RequestBody BilliardsDTO billiardsDTO, @RequestParam EntertainmentType entertainmentType) {
         return billiardsService.createBilliards(billiardsDTO, entertainmentType);
     }
 }

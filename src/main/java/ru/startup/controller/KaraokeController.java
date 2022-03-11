@@ -1,4 +1,4 @@
-package ru.startup.controllers;
+package ru.startup.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,24 +19,24 @@ public class KaraokeController {
     }
 
     @GetMapping("/api/karaoke/{id}")
-    public ResponseEntity<KaraokeDTO> getKaraokeById(@PathVariable  Long id){
-        if (!karaokeService.existsById(id)){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    public ResponseEntity<KaraokeDTO> getKaraokeById(@PathVariable Long id) {
+        if (!karaokeService.existsById(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(karaokeService.getKaraokeById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/api/karaoke/{id}")
-    public ResponseEntity<Void> deleteKaraokeById(@PathVariable Long id){
-        if (!karaokeService.existsById(id)){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    public ResponseEntity<Void> deleteKaraokeById(@PathVariable Long id) {
+        if (!karaokeService.existsById(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         karaokeService.deleteKaraokeById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/api/karaoke")
-    public KaraokeDTO createKaraoke(@RequestBody KaraokeDTO karaokeDTO, @RequestParam EntertainmentType entertainmentType){
+    public KaraokeDTO createKaraoke(@RequestBody KaraokeDTO karaokeDTO, @RequestParam EntertainmentType entertainmentType) {
         return karaokeService.createKaraoke(karaokeDTO, entertainmentType);
     }
 }

@@ -1,4 +1,4 @@
-package ru.startup.controllers;
+package ru.startup.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,24 +19,24 @@ public class QuestController {
     }
 
     @GetMapping("/api/quest/{id}")
-    public ResponseEntity<QuestDTO> getQuestById(@PathVariable Long id){
-        if (!questService.existsById(id)){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    public ResponseEntity<QuestDTO> getQuestById(@PathVariable Long id) {
+        if (!questService.existsById(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(questService.getQuestById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/api/quest/{id}")
-    public ResponseEntity<Void> deleteQuestById(@PathVariable Long id){
-        if (!questService.existsById(id)){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    public ResponseEntity<Void> deleteQuestById(@PathVariable Long id) {
+        if (!questService.existsById(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         questService.deleteQuestById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/api/quest")
-    public QuestDTO createPottery(@RequestBody QuestDTO questDTO, @RequestParam EntertainmentType entertainmentType){
+    public QuestDTO createPottery(@RequestBody QuestDTO questDTO, @RequestParam EntertainmentType entertainmentType) {
         return questService.createQuest(questDTO, entertainmentType);
     }
 }

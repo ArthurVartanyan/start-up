@@ -1,4 +1,4 @@
-package ru.startup.controllers;
+package ru.startup.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,24 +19,24 @@ public class ShootingClubController {
     }
 
     @GetMapping("/api/shooting-club/{id}")
-    public ResponseEntity<ShootingClubDTO> getShootingClubById(@PathVariable Long id){
-        if (!shootingClubService.existsById(id)){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    public ResponseEntity<ShootingClubDTO> getShootingClubById(@PathVariable Long id) {
+        if (!shootingClubService.existsById(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(shootingClubService.getShootingClubById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/api/shooting-club/{id}")
-    public ResponseEntity<Void> deleteShootingClubById(@PathVariable Long id){
-        if (!shootingClubService.existsById(id)){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    public ResponseEntity<Void> deleteShootingClubById(@PathVariable Long id) {
+        if (!shootingClubService.existsById(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         shootingClubService.deleteShootingClubById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/api/shooting-club")
-    public ShootingClubDTO createShootingClub(@RequestBody ShootingClubDTO shootingClubDTO, @RequestParam EntertainmentType entertainmentType){
+    public ShootingClubDTO createShootingClub(@RequestBody ShootingClubDTO shootingClubDTO, @RequestParam EntertainmentType entertainmentType) {
         return shootingClubService.createShootingClub(shootingClubDTO, entertainmentType);
     }
 }

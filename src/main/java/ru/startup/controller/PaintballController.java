@@ -1,4 +1,4 @@
-package ru.startup.controllers;
+package ru.startup.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,16 +20,16 @@ public class PaintballController {
 
     @GetMapping("/api/paintball/{id}")
     public ResponseEntity<PaintballDTO> getPaintballById(@PathVariable Long id) {
-        if (!paintballService.existsById(id)){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        if (!paintballService.existsById(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(paintballService.getPaintballById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/api/paintball/{id}")
     public ResponseEntity<Void> deletePaintballById(@PathVariable Long id) {
-        if (!paintballService.existsById(id)){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        if (!paintballService.existsById(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         paintballService.deletePaintballById(id);
         return new ResponseEntity<>(HttpStatus.OK);

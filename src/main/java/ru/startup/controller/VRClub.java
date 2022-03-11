@@ -1,4 +1,4 @@
-package ru.startup.controllers;
+package ru.startup.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,24 +19,24 @@ public class VRClub {
     }
 
     @GetMapping("/api/vr-club/{id}")
-    public ResponseEntity<VRClubDTO> getVRClubById(@PathVariable Long id){
-        if (!vrClubService.existsById(id)){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    public ResponseEntity<VRClubDTO> getVRClubById(@PathVariable Long id) {
+        if (!vrClubService.existsById(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(vrClubService.getVRClubById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/api/vr-club/{id}")
-    public ResponseEntity<Void> deleteVRClubById(@PathVariable Long id){
-        if (!vrClubService.existsById(id)){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    public ResponseEntity<Void> deleteVRClubById(@PathVariable Long id) {
+        if (!vrClubService.existsById(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         vrClubService.deleteVRClubById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/api/vr-club")
-    public VRClubDTO createVRClub(@RequestBody VRClubDTO vrClubDTO, @RequestParam EntertainmentType entertainmentType){
+    public VRClubDTO createVRClub(@RequestBody VRClubDTO vrClubDTO, @RequestParam EntertainmentType entertainmentType) {
         return vrClubService.createVRClub(vrClubDTO, entertainmentType);
     }
 }

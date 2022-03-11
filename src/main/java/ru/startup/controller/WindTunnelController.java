@@ -1,4 +1,4 @@
-package ru.startup.controllers;
+package ru.startup.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,24 +19,24 @@ public class WindTunnelController {
     }
 
     @GetMapping("/api/wind-tunnel/{id}")
-    public ResponseEntity<WindTunnelDTO> getWindTunnelById(@PathVariable Long id){
-        if (!windTunnelService.existsById(id)){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    public ResponseEntity<WindTunnelDTO> getWindTunnelById(@PathVariable Long id) {
+        if (!windTunnelService.existsById(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(windTunnelService.getWindTunnelById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/api/wind-tunnel/{id}")
-    public ResponseEntity<Void> deleteWindTunnelById(@PathVariable Long id){
-        if (!windTunnelService.existsById(id)){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    public ResponseEntity<Void> deleteWindTunnelById(@PathVariable Long id) {
+        if (!windTunnelService.existsById(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         windTunnelService.deleteWindTunnelById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/api/wind-tunnel")
-    public WindTunnelDTO createWindTunnel(@RequestBody WindTunnelDTO windTunnelDTO, @RequestParam EntertainmentType entertainmentType){
+    public WindTunnelDTO createWindTunnel(@RequestBody WindTunnelDTO windTunnelDTO, @RequestParam EntertainmentType entertainmentType) {
         return windTunnelService.createWindTunnel(windTunnelDTO, entertainmentType);
     }
 }

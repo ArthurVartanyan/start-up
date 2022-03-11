@@ -1,4 +1,4 @@
-package ru.startup.controllers;
+package ru.startup.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,24 +19,24 @@ public class MuseumController {
     }
 
     @GetMapping("/api/museum/{id}")
-    public ResponseEntity<MuseumDTO> getMuseumById(@PathVariable Long id){
-        if (!museumService.existsById(id)){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    public ResponseEntity<MuseumDTO> getMuseumById(@PathVariable Long id) {
+        if (!museumService.existsById(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(museumService.getMuseumById(id),HttpStatus.OK);
+        return new ResponseEntity<>(museumService.getMuseumById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/api/museum/{id}")
-    public ResponseEntity<Void> deleteMuseumById(@PathVariable Long id){
-        if (!museumService.existsById(id)){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    public ResponseEntity<Void> deleteMuseumById(@PathVariable Long id) {
+        if (!museumService.existsById(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         museumService.deleteMuseumById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/api/museum")
-    public MuseumDTO createMuseum(@RequestBody MuseumDTO museumDTO, @RequestParam EntertainmentType entertainmentType){
+    public MuseumDTO createMuseum(@RequestBody MuseumDTO museumDTO, @RequestParam EntertainmentType entertainmentType) {
         return museumService.createMuseum(museumDTO, entertainmentType);
     }
 }

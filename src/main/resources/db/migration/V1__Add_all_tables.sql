@@ -1,6 +1,6 @@
 create table general_entertainment
 (
-    id                 bigint      not null
+    id                 bigserial      not null
         constraint general_entertainment_pkey
             primary key,
     phone_number       varchar(12) not null
@@ -15,7 +15,7 @@ create table general_entertainment
 
 create table bath
 (
-    id   bigint      not null
+    id   bigserial      not null
         constraint bath_pkey
             primary key
         constraint bath_id_fkey
@@ -25,7 +25,7 @@ create table bath
 
 create table billiards
 (
-    id          bigint  not null
+    id          bigserial  not null
         constraint billiards_pkey
             primary key
         constraint billiards_id_fkey
@@ -36,7 +36,7 @@ create table billiards
 
 create table bowling
 (
-    id          bigint not null
+    id          bigserial not null
         constraint bowling_pkey
             primary key
         constraint bowling_id_fkey
@@ -47,7 +47,7 @@ create table bowling
 
 create table climbing_wall
 (
-    id bigint not null
+    id bigserial not null
         constraint climbing_wall_pkey
             primary key
         constraint climbing_wall_id_fkey
@@ -56,7 +56,7 @@ create table climbing_wall
 
 create table extreme
 (
-    id bigint not null
+    id bigserial not null
         constraint extreme_pkey
             primary key
         constraint extreme_id_fkey
@@ -65,7 +65,7 @@ create table extreme
 
 create table karaoke
 (
-    id bigint not null
+    id bigserial not null
         constraint karaoke_pkey
             primary key
         constraint karaoke_id_fkey
@@ -74,7 +74,7 @@ create table karaoke
 
 create table massage
 (
-    id   bigint  not null
+    id   bigserial  not null
         constraint massage_pkey
             primary key
         constraint massage_id_fkey
@@ -84,7 +84,7 @@ create table massage
 
 create table museum
 (
-    id    bigint      not null
+    id    bigserial      not null
         constraint museum_pkey
             primary key
         constraint museum_id_fkey
@@ -94,7 +94,7 @@ create table museum
 
 create table paintball
 (
-    id   bigint  not null
+    id   bigserial  not null
         constraint paintball_pkey
             primary key
         constraint paintball_id_fkey
@@ -104,7 +104,7 @@ create table paintball
 
 create table planetarium
 (
-    id bigint not null
+    id bigserial not null
         constraint planetarium_pkey
             primary key
         constraint planetarium_id_fkey
@@ -113,7 +113,7 @@ create table planetarium
 
 create table pottery
 (
-    id bigint not null
+    id bigserial not null
         constraint pottery_pkey
             primary key
         constraint pottery_id_fkey
@@ -122,7 +122,7 @@ create table pottery
 
 create table quest
 (
-    id bigint not null
+    id bigserial not null
         constraint quest_pkey
             primary key
         constraint quest_id_fkey
@@ -131,7 +131,7 @@ create table quest
 
 create table shooting_club
 (
-    id       bigint  not null
+    id       bigserial  not null
         constraint shooting_club_pkey
             primary key
         constraint shooting_club_id_fkey
@@ -142,7 +142,7 @@ create table shooting_club
 
 create table weapon
 (
-    id   bigint       not null
+    id   bigserial       not null
         constraint weapon_pkey
             primary key,
     name varchar(100) not null
@@ -150,14 +150,14 @@ create table weapon
 
 create table shooting_club_weapon
 (
-    id               bigint not null
+    id               bigserial not null
         constraint shooting_club_weapon_pkey
             primary key,
-    shooting_club_id bigint not null
+    shooting_club_id bigserial not null
         constraint shooting_club_weapon_shooting_club_id_fkey
             references shooting_club
             on update cascade on delete cascade,
-    weapon_id        bigint not null
+    weapon_id        bigserial not null
         constraint shooting_club_weapon_weapon_id_fkey
             references weapon
             on update cascade on delete cascade
@@ -165,7 +165,7 @@ create table shooting_club_weapon
 
 create table vr_club
 (
-    id                bigint not null
+    id                bigserial not null
         constraint vr_club_pkey
             primary key
         constraint vr_club_id_fkey
@@ -175,7 +175,7 @@ create table vr_club
 
 create table vr_game
 (
-    id   bigint      not null
+    id   bigserial      not null
         constraint vr_game_pkey
             primary key,
     name varchar(40) not null
@@ -183,14 +183,14 @@ create table vr_game
 
 create table vr_club_game
 (
-    id         bigint not null
+    id         bigserial not null
         constraint vr_club_game_pkey
             primary key,
-    vr_club_id bigint not null
+    vr_club_id bigserial not null
         constraint vr_club_game_vr_club_id_fkey
             references vr_club
             on update cascade on delete cascade,
-    vr_game_id bigint not null
+    vr_game_id bigserial not null
         constraint vr_club_game_vr_game_id_fkey
             references vr_game
             on update cascade on delete cascade
@@ -198,7 +198,7 @@ create table vr_club_game
 
 create table wind_tunnel
 (
-    id bigint not null
+    id bigserial not null
         constraint wind_tunnel_pkey
             primary key
         constraint wind_tunnel_id_fkey
@@ -207,7 +207,7 @@ create table wind_tunnel
 
 create table zoo
 (
-    id bigint not null
+    id bigserial not null
         constraint zoo_pkey
             primary key
         constraint zoo_id_fkey

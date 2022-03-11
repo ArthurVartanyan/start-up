@@ -1,4 +1,4 @@
-package ru.startup.controllers;
+package ru.startup.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,24 +19,24 @@ public class PlanetariumController {
     }
 
     @GetMapping("/api/planetarium/{id}")
-    public ResponseEntity<PlanetariumDTO> getPaintballById(@PathVariable Long id){
-        if (!planetariumService.existsById(id)){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    public ResponseEntity<PlanetariumDTO> getPaintballById(@PathVariable Long id) {
+        if (!planetariumService.existsById(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(planetariumService.getPlanetariumById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/api/planetarium/{id}")
-    public ResponseEntity<Void> deletePlanetariumById(@PathVariable Long id){
-        if (!planetariumService.existsById(id)){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    public ResponseEntity<Void> deletePlanetariumById(@PathVariable Long id) {
+        if (!planetariumService.existsById(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         planetariumService.deletePlanetariumById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/api/planetarium")
-    public PlanetariumDTO createPlanetarium(@RequestBody PlanetariumDTO planetariumDTO, @RequestParam EntertainmentType entertainmentType){
+    public PlanetariumDTO createPlanetarium(@RequestBody PlanetariumDTO planetariumDTO, @RequestParam EntertainmentType entertainmentType) {
         return planetariumService.createPlanetarium(planetariumDTO, entertainmentType);
     }
 }
