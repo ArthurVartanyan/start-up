@@ -1,4 +1,4 @@
-package ru.startup.controllers;
+package ru.startup.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,24 +19,24 @@ public class PotteryController {
     }
 
     @GetMapping("/api/pottery/{id}")
-    public ResponseEntity<PotteryDTO> getPotteryById(@PathVariable Long id){
-        if (!potteryService.existsById(id)){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    public ResponseEntity<PotteryDTO> getPotteryById(@PathVariable Long id) {
+        if (!potteryService.existsById(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(potteryService.getPotteryById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/api/pottery/{id}")
-    public ResponseEntity<Void> deletePotteryById(@PathVariable Long id){
-        if (!potteryService.existsById(id)){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    public ResponseEntity<Void> deletePotteryById(@PathVariable Long id) {
+        if (!potteryService.existsById(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         potteryService.deletePotteryById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/api/pottery")
-    public PotteryDTO createPottery(@RequestBody PotteryDTO potteryDTO, @RequestParam EntertainmentType entertainmentType){
+    public PotteryDTO createPottery(@RequestBody PotteryDTO potteryDTO, @RequestParam EntertainmentType entertainmentType) {
         return potteryService.createPottery(potteryDTO, entertainmentType);
     }
 }

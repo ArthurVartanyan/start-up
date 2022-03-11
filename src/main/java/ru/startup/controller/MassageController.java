@@ -1,4 +1,4 @@
-package ru.startup.controllers;
+package ru.startup.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,24 +19,24 @@ public class MassageController {
     }
 
     @GetMapping("/api/massage/{id}")
-    public ResponseEntity<MassageDTO> getMassageById(@PathVariable Long id){
-        if (!massageService.existsById(id)){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    public ResponseEntity<MassageDTO> getMassageById(@PathVariable Long id) {
+        if (!massageService.existsById(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(massageService.getMassageById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/api/massage/{id}")
-    public ResponseEntity<Void> deleteMassageById(@PathVariable Long id){
-        if (!massageService.existsById(id)){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    public ResponseEntity<Void> deleteMassageById(@PathVariable Long id) {
+        if (!massageService.existsById(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         massageService.deleteMassageById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/api/massage")
-    public MassageDTO createMassage(@RequestBody MassageDTO massageDTO, @RequestParam EntertainmentType entertainmentType){
+    public MassageDTO createMassage(@RequestBody MassageDTO massageDTO, @RequestParam EntertainmentType entertainmentType) {
         return massageService.createMassage(massageDTO, entertainmentType);
     }
 }

@@ -1,4 +1,4 @@
-package ru.startup.controllers;
+package ru.startup.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,24 +19,24 @@ public class ZooController {
     }
 
     @GetMapping("/api/zoo/{id}")
-    public ResponseEntity<ZooDTO> getZooById(@PathVariable Long id){
-        if (!zooService.existsById(id)){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    public ResponseEntity<ZooDTO> getZooById(@PathVariable Long id) {
+        if (!zooService.existsById(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(zooService.getZooById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/api/zoo/{id}")
-    public ResponseEntity<Void> deleteZooById(@PathVariable Long id){
-        if (!zooService.existsById(id)){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    public ResponseEntity<Void> deleteZooById(@PathVariable Long id) {
+        if (!zooService.existsById(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         zooService.deleteZooById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/api/zoo")
-    public ZooDTO createZoo(@RequestBody ZooDTO zooDTO, @RequestParam EntertainmentType entertainmentType){
+    public ZooDTO createZoo(@RequestBody ZooDTO zooDTO, @RequestParam EntertainmentType entertainmentType) {
         return zooService.createZoo(zooDTO, entertainmentType);
     }
 }

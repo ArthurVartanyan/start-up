@@ -1,4 +1,4 @@
-package ru.startup.controllers;
+package ru.startup.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,16 +20,16 @@ public class BathController {
 
     @GetMapping("/api/bath/{id}")
     public ResponseEntity<BathDTO> getBathById(@PathVariable Long id) {
-        if (!bathService.existsById(id)){
-           return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        if (!bathService.existsById(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(bathService.getBathById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/api/bath/{id}")
     public ResponseEntity<Void> deleteBathById(@PathVariable Long id) {
-        if (!bathService.existsById(id)){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        if (!bathService.existsById(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         bathService.deleteBathById(id);
         return new ResponseEntity<>(HttpStatus.OK);
