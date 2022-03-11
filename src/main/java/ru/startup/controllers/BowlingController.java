@@ -1,6 +1,8 @@
 package ru.startup.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.startup.dto.BowlingDTO;
 import ru.startup.model.entertainment.EntertainmentType;
@@ -17,13 +19,20 @@ public class BowlingController {
     }
 
     @GetMapping("/api/bowling/{id}")
-    public BowlingDTO getBowlingById(@PathVariable Long id){
-        return bowlingService.getBowlingById(id);
+    public ResponseEntity<BowlingDTO> getBowlingById(@PathVariable Long id){
+        if (!bowlingService.existsById(id)){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(bowlingService.getBowlingById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/api/bowling/{id}")
-    public void deleteBowlingById(@PathVariable Long id){
+    public ResponseEntity<Void> deleteBowlingById(@PathVariable Long id){
+        if (!bowlingService.existsById(id)){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         bowlingService.deleteBowlingById(id);
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @PostMapping("/api/bowling")

@@ -35,6 +35,10 @@ public class VRClubService {
         vrClubRepository.save(vrClub);
     }
 
+    public boolean existsById(Long id){
+        return vrClubRepository.existsById(id);
+    }
+
     public VRClubDTO createVRClub(VRClubDTO questDTO, EntertainmentType entertainmentType) {
         VRClub vrClub = entertainmentMapper.map(questDTO, VRClub.class);
         vrClub.setEntertainmentType(entertainmentType);

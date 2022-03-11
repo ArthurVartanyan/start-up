@@ -1,6 +1,8 @@
 package ru.startup.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.startup.dto.BilliardsDTO;
 import ru.startup.model.entertainment.EntertainmentType;
@@ -17,13 +19,20 @@ public class BilliardsController {
     }
 
     @GetMapping("/api/billiards/{id}")
-    public BilliardsDTO getBilliardsById(@PathVariable Long id){
-        return billiardsService.getBilliardsById(id);
+    public ResponseEntity<BilliardsDTO> getBilliardsById(@PathVariable Long id){
+        if (!billiardsService.existsById(id)){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(billiardsService.getBilliardsById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/api/billiards/{id}")
-    public void deleteBilliardsById(@PathVariable Long id){
+    public ResponseEntity<Void> deleteBilliardsById(@PathVariable Long id){
+        if (!billiardsService.existsById(id)){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         billiardsService.deleteBilliardsById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/api/billiards")

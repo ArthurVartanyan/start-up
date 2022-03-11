@@ -35,6 +35,10 @@ public class ExtremeService {
         extremeRepository.save(extreme);
     }
 
+    public boolean existsById(Long id){
+        return extremeRepository.existsById(id);
+    }
+
     public ExtremeDTO createExtreme(ExtremeDTO extremeDTO, EntertainmentType entertainmentType) {
         Extreme extreme = entertainmentMapper.map(extremeDTO, Extreme.class);
         extreme.setEntertainmentType(entertainmentType);

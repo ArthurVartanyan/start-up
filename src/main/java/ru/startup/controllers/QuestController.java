@@ -1,6 +1,8 @@
 package ru.startup.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.startup.dto.QuestDTO;
 import ru.startup.model.entertainment.EntertainmentType;
@@ -17,13 +19,20 @@ public class QuestController {
     }
 
     @GetMapping("/api/quest/{id}")
-    public QuestDTO getQuestById(@PathVariable Long id){
-        return questService.getQuestById(id);
+    public ResponseEntity<QuestDTO> getQuestById(@PathVariable Long id){
+        if (!questService.existsById(id)){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(questService.getQuestById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/api/quest/{id}")
-    public void deleteQuestById(@PathVariable Long id){
+    public ResponseEntity<Void> deleteQuestById(@PathVariable Long id){
+        if (!questService.existsById(id)){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         questService.deleteQuestById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/api/quest")

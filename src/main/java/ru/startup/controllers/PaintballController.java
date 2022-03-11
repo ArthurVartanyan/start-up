@@ -1,6 +1,8 @@
 package ru.startup.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.startup.dto.PaintballDTO;
 import ru.startup.model.entertainment.EntertainmentType;
@@ -17,17 +19,24 @@ public class PaintballController {
     }
 
     @GetMapping("/api/paintball/{id}")
-    public PaintballDTO getPaintballById(@PathVariable Long id){
-        return paintballService.getPaintballById(id);
+    public ResponseEntity<PaintballDTO> getPaintballById(@PathVariable Long id) {
+        if (!paintballService.existsById(id)){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(paintballService.getPaintballById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/api/paintball/{id}")
-    public void deletePaintballById(@PathVariable Long id){
+    public ResponseEntity<Void> deletePaintballById(@PathVariable Long id) {
+        if (!paintballService.existsById(id)){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         paintballService.deletePaintballById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/api/paintball")
-    public PaintballDTO createMuseum(@RequestBody PaintballDTO paintballDTO, @RequestParam EntertainmentType entertainmentType){
+    public PaintballDTO createMuseum(@RequestBody PaintballDTO paintballDTO, @RequestParam EntertainmentType entertainmentType) {
         return paintballService.createPaintball(paintballDTO, entertainmentType);
     }
 }
