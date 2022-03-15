@@ -36,7 +36,10 @@ public class BathController {
     }
 
     @PostMapping("/api/bath")
-    public BathDTO createBath(@RequestBody BathDTO bathDTO, @RequestParam EntertainmentType entertainmentType) {
-        return bathService.createBath(bathDTO, entertainmentType);
+    public ResponseEntity<BathDTO> createBath(@RequestBody BathDTO bathDTO, @RequestParam EntertainmentType entertainmentType) {
+        if (bathService.existByName(bathDTO.getName())){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(bathService.createBath(bathDTO, entertainmentType), HttpStatus.CREATED);
     }
 }

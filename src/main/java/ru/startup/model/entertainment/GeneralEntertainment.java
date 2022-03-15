@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class GeneralEntertainment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "phone_number")
@@ -38,7 +38,7 @@ public class GeneralEntertainment {
     private String price;
 
     @Column(name = "deleted")
-    private Boolean deleted;
+    private Boolean deleted = Boolean.FALSE;
 
     @Column(name = "name")
     private String name;
