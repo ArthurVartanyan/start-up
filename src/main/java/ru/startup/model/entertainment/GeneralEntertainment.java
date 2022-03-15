@@ -39,4 +39,7 @@ public class GeneralEntertainment {
 
     @Column(name = "deleted")
     private Boolean deleted;
+
+    @Column(name = "name")
+    private String name;
 }

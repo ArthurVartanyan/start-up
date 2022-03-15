@@ -22,5 +22,5 @@ public class GeneralEntertainmentDTO {
 
     private String price;
 
-    private String name; //добавить в базу
+    private String name;
 }
