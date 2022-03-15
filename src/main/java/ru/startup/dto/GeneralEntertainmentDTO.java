@@ -21,4 +21,6 @@ public class GeneralEntertainmentDTO {
     private EntertainmentType entertainmentType;
 
     private String price;
+
+    private String name; //добавить в базу
 }
