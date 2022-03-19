@@ -39,6 +39,10 @@ public class PaintballService {
         return paintballRepository.existsById(id);
     }
 
+    public boolean existsByName(String name){
+        return paintballRepository.existsByNameAndDeletedIsFalse(name);
+    }
+
     public PaintballDTO createPaintball(PaintballDTO paintballDTO, EntertainmentType entertainmentType) {
         Paintball paintball = entertainmentMapper.map(paintballDTO, Paintball.class);
         paintball.setEntertainmentType(entertainmentType);

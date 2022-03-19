@@ -39,6 +39,10 @@ public class BowlingService {
         return bowlingRepository.existsById(id);
     }
 
+    public boolean existsByName(String name){
+        return bowlingRepository.existsByNameAndDeletedIsFalse(name);
+    }
+
     public BowlingDTO createBowling(BowlingDTO bowlingDTO, EntertainmentType entertainmentType) {
         Bowling bowling = entertainmentMapper.map(bowlingDTO, Bowling.class);
         bowling.setEntertainmentType(entertainmentType);

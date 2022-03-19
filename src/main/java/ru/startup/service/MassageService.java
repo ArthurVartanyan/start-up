@@ -39,6 +39,10 @@ public class MassageService {
         return massageRepository.existsById(id);
     }
 
+    public boolean existsByName(String name){
+        return massageRepository.existsByNameAndDeletedIsFalse(name);
+    }
+
     public MassageDTO createMassage(MassageDTO massageDTO, EntertainmentType entertainmentType) {
         Massage massage = entertainmentMapper.map(massageDTO, Massage.class);
         massage.setEntertainmentType(entertainmentType);

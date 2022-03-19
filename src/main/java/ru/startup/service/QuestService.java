@@ -39,6 +39,10 @@ public class QuestService {
         return questRepository.existsById(id);
     }
 
+    public boolean existsByName(String name){
+        return questRepository.existsByNameAndDeletedIsFalse(name);
+    }
+
     public QuestDTO createQuest(QuestDTO questDTO, EntertainmentType entertainmentType) {
         Quest quest = entertainmentMapper.map(questDTO, Quest.class);
         quest.setEntertainmentType(entertainmentType);

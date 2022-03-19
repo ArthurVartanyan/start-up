@@ -36,7 +36,10 @@ public class ClimbingWallController {
     }
 
     @PostMapping("/api/climbing-wall")
-    public ClimbingWallDTO createClimbingWall(@RequestBody ClimbingWallDTO climbingWallDTO, @RequestParam EntertainmentType entertainmentType) {
-        return climbingWallService.createClimbingWall(climbingWallDTO, entertainmentType);
+    public ResponseEntity<ClimbingWallDTO> createClimbingWall(@RequestBody ClimbingWallDTO climbingWallDTO, @RequestParam EntertainmentType entertainmentType) {
+        if (climbingWallService.existsByName(climbingWallDTO.getName())) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(climbingWallService.createClimbingWall(climbingWallDTO, entertainmentType), HttpStatus.CREATED);
     }
 }

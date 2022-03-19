@@ -39,6 +39,10 @@ public class ShootingClubService {
         return shootingClubRepository.existsById(id);
     }
 
+    public boolean existsByName(String name){
+        return shootingClubRepository.existsByNameAndDeletedIsFalse(name);
+    }
+
     public ShootingClubDTO createShootingClub(ShootingClubDTO shootingClubDTO, EntertainmentType entertainmentType) {
         ShootingClub shootingClub = entertainmentMapper.map(shootingClubDTO, ShootingClub.class);
         shootingClub.setEntertainmentType(entertainmentType);

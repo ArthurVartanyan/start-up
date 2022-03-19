@@ -8,4 +8,6 @@ import ru.startup.model.entertainment.ShootingClub;
 public interface ShootingClubRepository extends JpaRepository<ShootingClub, Long> {
 
     ShootingClub getShootingClubByIdAndDeletedIsFalse(Long id);
+
+    boolean existsByNameAndDeletedIsFalse(String name);
 }

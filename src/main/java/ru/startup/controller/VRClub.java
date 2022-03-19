@@ -36,7 +36,10 @@ public class VRClub {
     }
 
     @PostMapping("/api/vr-club")
-    public VRClubDTO createVRClub(@RequestBody VRClubDTO vrClubDTO, @RequestParam EntertainmentType entertainmentType) {
-        return vrClubService.createVRClub(vrClubDTO, entertainmentType);
+    public ResponseEntity<VRClubDTO> createVRClub(@RequestBody VRClubDTO vrClubDTO, @RequestParam EntertainmentType entertainmentType) {
+        if (vrClubService.existsByName(vrClubDTO.getName())){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(vrClubService.createVRClub(vrClubDTO, entertainmentType), HttpStatus.CREATED);
     }
 }

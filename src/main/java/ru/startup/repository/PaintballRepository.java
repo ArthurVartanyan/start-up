@@ -9,4 +9,6 @@ import ru.startup.model.entertainment.Paintball;
 public interface PaintballRepository extends JpaRepository<Paintball, Long> {
 
     Paintball getPaintballByIdAndDeletedIsFalse(Long id);
+
+    boolean existsByNameAndDeletedIsFalse(String name);
 }

@@ -39,6 +39,10 @@ public class VRClubService {
         return vrClubRepository.existsById(id);
     }
 
+    public boolean existsByName(String name){
+        return vrClubRepository.existsByNameAndDeletedIsFalse(name);
+    }
+
     public VRClubDTO createVRClub(VRClubDTO questDTO, EntertainmentType entertainmentType) {
         VRClub vrClub = entertainmentMapper.map(questDTO, VRClub.class);
         vrClub.setEntertainmentType(entertainmentType);

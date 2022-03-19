@@ -39,6 +39,10 @@ public class PotteryService {
         return potteryRepository.existsById(id);
     }
 
+    public boolean existsByName(String name){
+        return potteryRepository.existsByNameAndDeletedIsFalse(name);
+    }
+
     public PotteryDTO createPottery(PotteryDTO potteryDTO, EntertainmentType entertainmentType) {
         Pottery pottery = entertainmentMapper.map(potteryDTO, Pottery.class);
         pottery.setEntertainmentType(entertainmentType);

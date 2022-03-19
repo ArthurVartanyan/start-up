@@ -39,6 +39,10 @@ public class MuseumService {
         return museumRepository.existsById(id);
     }
 
+    public boolean existsByName(String name){
+        return museumRepository.existsByNameAndDeletedIsFalse(name);
+    }
+
     public MuseumDTO createMuseum(MuseumDTO museumDTO, EntertainmentType entertainmentType) {
         Museum museum = entertainmentMapper.map(museumDTO, Museum.class);
         museum.setEntertainmentType(entertainmentType);
