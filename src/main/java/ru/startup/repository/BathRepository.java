@@ -9,4 +9,7 @@ import ru.startup.model.entertainment.Bath;
 public interface BathRepository extends JpaRepository<Bath, Long> {
 
     Bath getBathByIdAndDeletedIsFalse(Long id);
+
+    boolean existsByNameAndDeletedIsFalse(String name);
+
 }

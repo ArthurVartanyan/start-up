@@ -3,6 +3,7 @@ package ru.startup.model.entertainment;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -15,7 +16,7 @@ import java.time.LocalDateTime;
 public class GeneralEntertainment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "phone_number")
@@ -38,6 +39,7 @@ public class GeneralEntertainment {
     private String price;
 
     @Column(name = "deleted")
+    @ColumnDefault("false")
     private Boolean deleted;
 
     @Column(name = "name")

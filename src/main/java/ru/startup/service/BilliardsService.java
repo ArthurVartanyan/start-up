@@ -39,6 +39,10 @@ public class BilliardsService {
         return billiardsRepository.existsById(id);
     }
 
+    public boolean existsByName(String name){
+        return billiardsRepository.existsByNameAndDeletedIsFalse(name);
+    }
+
     public BilliardsDTO createBilliards(BilliardsDTO billiardsDTO, EntertainmentType entertainmentType) {
         Billiards billiards = entertainmentMapper.map(billiardsDTO, Billiards.class);
         billiards.setEntertainmentType(entertainmentType);

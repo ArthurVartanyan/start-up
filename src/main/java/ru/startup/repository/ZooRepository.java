@@ -8,4 +8,6 @@ import ru.startup.model.entertainment.Zoo;
 public interface ZooRepository extends JpaRepository<Zoo, Long> {
 
     Zoo getZooByIdAndDeletedIsFalse(Long id);
+
+    boolean existsByNameAndDeletedIsFalse(String name);
 }

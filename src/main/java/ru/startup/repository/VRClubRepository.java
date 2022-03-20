@@ -8,4 +8,6 @@ import ru.startup.model.entertainment.VRClub;
 public interface VRClubRepository extends JpaRepository<VRClub, Long> {
 
     VRClub getVRClubByIdAndDeletedIsFalse(Long id);
+
+    boolean existsByNameAndDeletedIsFalse(String name);
 }

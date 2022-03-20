@@ -8,4 +8,6 @@ import ru.startup.model.entertainment.Pottery;
 public interface PotteryRepository extends JpaRepository<Pottery, Long> {
 
     Pottery getPotteryByIdAndDeletedIsFalse(Long id);
+
+    boolean existsByNameAndDeletedIsFalse(String name);
 }

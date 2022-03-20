@@ -39,6 +39,10 @@ public class ClimbingWallService {
         return climbingWallRepository.existsById(id);
     }
 
+    public boolean existsByName(String name){
+        return climbingWallRepository.existsByNameAndDeletedIsFalse(name);
+    }
+
     public ClimbingWallDTO createClimbingWall(ClimbingWallDTO climbingWallDTO, EntertainmentType entertainmentType) {
         ClimbingWall climbingWall = entertainmentMapper.map(climbingWallDTO, ClimbingWall.class);
         climbingWall.setEntertainmentType(entertainmentType);

@@ -8,4 +8,6 @@ import ru.startup.model.entertainment.Museum;
 public interface MuseumRepository extends JpaRepository<Museum, Long> {
 
     Museum getMuseumByIdAndDeletedIsFalse(Long id);
+
+    boolean existsByNameAndDeletedIsFalse(String name);
 }

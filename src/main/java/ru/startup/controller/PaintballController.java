@@ -36,7 +36,10 @@ public class PaintballController {
     }
 
     @PostMapping("/api/paintball")
-    public PaintballDTO createMuseum(@RequestBody PaintballDTO paintballDTO, @RequestParam EntertainmentType entertainmentType) {
-        return paintballService.createPaintball(paintballDTO, entertainmentType);
+    public ResponseEntity<PaintballDTO> createMuseum(@RequestBody PaintballDTO paintballDTO, @RequestParam EntertainmentType entertainmentType) {
+        if (paintballService.existsByName(paintballDTO.getName())){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(paintballService.createPaintball(paintballDTO, entertainmentType), HttpStatus.CREATED);
     }
 }

@@ -8,4 +8,6 @@ import ru.startup.model.entertainment.Bowling;
 public interface BowlingRepository extends JpaRepository<Bowling, Long> {
 
     Bowling getBowlingByIdAndDeletedIsFalse(Long id);
+
+    boolean existsByNameAndDeletedIsFalse(String name);
 }

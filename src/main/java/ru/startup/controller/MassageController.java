@@ -36,7 +36,10 @@ public class MassageController {
     }
 
     @PostMapping("/api/massage")
-    public MassageDTO createMassage(@RequestBody MassageDTO massageDTO, @RequestParam EntertainmentType entertainmentType) {
-        return massageService.createMassage(massageDTO, entertainmentType);
+    public ResponseEntity<MassageDTO> createMassage(@RequestBody MassageDTO massageDTO, @RequestParam EntertainmentType entertainmentType) {
+        if (massageService.existsByName(massageDTO.getName())){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(massageService.createMassage(massageDTO, entertainmentType), HttpStatus.CREATED);
     }
 }

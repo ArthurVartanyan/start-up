@@ -8,4 +8,6 @@ import ru.startup.model.entertainment.Extreme;
 public interface ExtremeRepository extends JpaRepository<Extreme, Long> {
 
     Extreme getExtremeByIdAndDeletedIsFalse(Long id);
+
+    boolean existsByNameAndDeletedIsFalse(String name);
 }

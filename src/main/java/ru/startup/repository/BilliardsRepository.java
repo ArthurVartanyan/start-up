@@ -8,4 +8,6 @@ import ru.startup.model.entertainment.Billiards;
 public interface BilliardsRepository extends JpaRepository<Billiards, Long> {
 
     Billiards getBilliardsByIdAndDeletedIsFalse(Long id);
+
+    boolean existsByNameAndDeletedIsFalse(String name);
 }

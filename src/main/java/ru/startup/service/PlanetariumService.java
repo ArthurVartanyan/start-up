@@ -39,6 +39,10 @@ public class PlanetariumService {
         return planetariumRepository.existsById(id);
     }
 
+    public boolean existsByName(String name){
+        return planetariumRepository.existsByNameAndDeletedIsFalse(name);
+    }
+
     public PlanetariumDTO createPlanetarium(PlanetariumDTO planetariumDTO, EntertainmentType entertainmentType) {
         Planetarium planetarium = entertainmentMapper.map(planetariumDTO, Planetarium.class);
         planetarium.setEntertainmentType(entertainmentType);

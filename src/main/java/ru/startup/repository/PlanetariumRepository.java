@@ -9,4 +9,6 @@ import ru.startup.model.entertainment.Planetarium;
 public interface PlanetariumRepository extends JpaRepository<Planetarium, Long> {
 
     Planetarium getPlanetariumByIdAndDeletedIsFalse(Long id);
+
+    boolean existsByNameAndDeletedIsFalse(String name);
 }

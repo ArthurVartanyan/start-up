@@ -36,7 +36,10 @@ public class KaraokeController {
     }
 
     @PostMapping("/api/karaoke")
-    public KaraokeDTO createKaraoke(@RequestBody KaraokeDTO karaokeDTO, @RequestParam EntertainmentType entertainmentType) {
-        return karaokeService.createKaraoke(karaokeDTO, entertainmentType);
+    public ResponseEntity<KaraokeDTO> createKaraoke(@RequestBody KaraokeDTO karaokeDTO, @RequestParam EntertainmentType entertainmentType) {
+        if (karaokeService.existsByName(karaokeDTO.getName())){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(karaokeService.createKaraoke(karaokeDTO, entertainmentType), HttpStatus.CREATED);
     }
 }

@@ -36,7 +36,10 @@ public class BilliardsController {
     }
 
     @PostMapping("/api/billiards")
-    public BilliardsDTO createBilliards(@RequestBody BilliardsDTO billiardsDTO, @RequestParam EntertainmentType entertainmentType) {
-        return billiardsService.createBilliards(billiardsDTO, entertainmentType);
+    public ResponseEntity<BilliardsDTO> createBilliards(@RequestBody BilliardsDTO billiardsDTO, @RequestParam EntertainmentType entertainmentType) {
+        if (billiardsService.existsByName(billiardsDTO.getName())){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(billiardsService.createBilliards(billiardsDTO, entertainmentType), HttpStatus.CREATED);
     }
 }

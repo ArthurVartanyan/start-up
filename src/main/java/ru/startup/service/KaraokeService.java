@@ -39,6 +39,10 @@ public class KaraokeService {
         return karaokeRepository.existsById(id);
     }
 
+    public boolean existsByName(String name){
+        return karaokeRepository.existsByNameAndDeletedIsFalse(name);
+    }
+
     public KaraokeDTO createKaraoke(KaraokeDTO karaokeDTO, EntertainmentType entertainmentType) {
         Karaoke karaoke = entertainmentMapper.map(karaokeDTO, Karaoke.class);
         karaoke.setEntertainmentType(entertainmentType);

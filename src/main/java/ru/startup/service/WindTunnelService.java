@@ -39,6 +39,10 @@ public class WindTunnelService {
         return windTunnelRepository.existsById(id);
     }
 
+    public boolean existsByName(String name){
+        return windTunnelRepository.existsByNameAndDeletedIsFalse(name);
+    }
+
     public WindTunnelDTO createWindTunnel(WindTunnelDTO windTunnelDTO, EntertainmentType entertainmentType) {
         WindTunnel windTunnel = entertainmentMapper.map(windTunnelDTO, WindTunnel.class);
         windTunnel.setEntertainmentType(entertainmentType);

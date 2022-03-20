@@ -39,6 +39,9 @@ public class BathService {
         return bathRepository.existsById(id);
     }
 
+    public boolean existsByName(String name){
+        return bathRepository.existsByNameAndDeletedIsFalse(name);
+    }
     public BathDTO createBath(BathDTO bathDTO, EntertainmentType entertainmentType) {
         Bath bath = entertainmentMapper.map(bathDTO, Bath.class);
         bath.setEntertainmentType(entertainmentType);

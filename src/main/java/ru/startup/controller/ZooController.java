@@ -36,7 +36,10 @@ public class ZooController {
     }
 
     @PostMapping("/api/zoo")
-    public ZooDTO createZoo(@RequestBody ZooDTO zooDTO, @RequestParam EntertainmentType entertainmentType) {
-        return zooService.createZoo(zooDTO, entertainmentType);
+    public ResponseEntity<ZooDTO> createZoo(@RequestBody ZooDTO zooDTO, @RequestParam EntertainmentType entertainmentType) {
+        if (zooService.existsByName(zooDTO.getName())){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(zooService.createZoo(zooDTO, entertainmentType), HttpStatus.CREATED);
     }
 }
