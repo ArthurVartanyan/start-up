@@ -1,9 +1,17 @@
 plugins {
     id 'java'
+    id "org.springframework.boot" version "2.6.3"
 }
 
 group 'org.example'
 version '1.0-SNAPSHOT'
+
+jar {
+    manifest {
+        // This is where the Main class is specified for launching applications (otherwise the jar will not start)
+        attributes 'Main-Class': 'ru.startup.Main'
+    }
+}
 
 repositories {
     mavenCentral()
