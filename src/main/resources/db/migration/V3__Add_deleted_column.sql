@@ -1,1 +1,2 @@
-alter table general_entertainment add column deleted boolean;
+alter table general_entertainment
+    add column deleted boolean;

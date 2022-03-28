@@ -1,137 +1,74 @@
 package ru.startup.mapper;
 
-import ma.glasnost.orika.MapperFactory;
-import ma.glasnost.orika.impl.ConfigurableMapper;
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
+import org.mapstruct.ReportingPolicy;
 import ru.startup.dto.*;
 import ru.startup.model.entertainment.*;
 
-@Component
-public class EntertainmentMapper extends ConfigurableMapper {
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
+public interface EntertainmentMapper {
 
-    @Override
-    protected void configure(MapperFactory mapperFactory) {
+    Bath map(BathDTO bathDTO);
 
-        mapperFactory.classMap(Bath.class, BathDTO.class)
-                .byDefault()
-                .register();
+    BathDTO map(Bath bath);
 
-        mapperFactory.classMap(BathDTO.class, Bath.class)
-                .byDefault()
-                .register();
+    Billiards map(BilliardsDTO billiardsDTO);
 
-        mapperFactory.classMap(Billiards.class, BilliardsDTO.class)
-                .byDefault()
-                .register();
+    BilliardsDTO map(Billiards billiards);
 
-        mapperFactory.classMap(BilliardsDTO.class, Billiards.class)
-                .byDefault()
-                .register();
+    Bowling map(BowlingDTO bowlingDTO);
 
-        mapperFactory.classMap(BowlingDTO.class, Bowling.class)
-                .byDefault()
-                .register();
+    BowlingDTO map(Bowling bowling);
 
-        mapperFactory.classMap(Bowling.class, BowlingDTO.class)
-                .byDefault()
-                .register();
+    ClimbingWall map(ClimbingWallDTO climbingWallDTO);
 
-        mapperFactory.classMap(ExtremeDTO.class, Extreme.class)
-                .byDefault()
-                .register();
+    ClimbingWallDTO map(ClimbingWall climbingWall);
 
-        mapperFactory.classMap(Extreme.class, ExtremeDTO.class)
-                .byDefault()
-                .register();
+    Extreme map(ExtremeDTO extremeDTO);
 
-        mapperFactory.classMap(KaraokeDTO.class, Karaoke.class)
-                .byDefault()
-                .register();
+    ExtremeDTO map(Extreme extreme);
 
-        mapperFactory.classMap(Karaoke.class, KaraokeDTO.class)
-                .byDefault()
-                .register();
+    Karaoke map(KaraokeDTO karaokeDTO);
 
-        mapperFactory.classMap(MassageDTO.class, Massage.class)
-                .byDefault()
-                .register();
+    KaraokeDTO map(Karaoke karaoke);
 
-        mapperFactory.classMap(Massage.class, MassageDTO.class)
-                .byDefault()
-                .register();
+    Massage map(MassageDTO massageDTO);
 
-        mapperFactory.classMap(Museum.class, MuseumDTO.class)
-                .byDefault()
-                .register();
+    MassageDTO map(Massage massage);
 
-        mapperFactory.classMap(MuseumDTO.class, Museum.class)
-                .byDefault()
-                .register();
+    Museum map(MuseumDTO museumDTO);
 
-        mapperFactory.classMap(Paintball.class, PaintballDTO.class)
-                .byDefault()
-                .register();
+    MuseumDTO map(Museum museum);
 
-        mapperFactory.classMap(PaintballDTO.class, Paintball.class)
-                .byDefault()
-                .register();
+    Paintball map(PaintballDTO paintballDTO);
 
-        mapperFactory.classMap(Planetarium.class, PlanetariumDTO.class)
-                .byDefault()
-                .register();
+    PaintballDTO map(Paintball paintball);
 
-        mapperFactory.classMap(PlanetariumDTO.class, Planetarium.class)
-                .byDefault()
-                .register();
+    Planetarium map(PlanetariumDTO planetariumDTO);
 
-        mapperFactory.classMap(Pottery.class, PotteryDTO.class)
-                .byDefault()
-                .register();
+    PlanetariumDTO map(Planetarium planetarium);
 
-        mapperFactory.classMap(PotteryDTO.class, Pottery.class)
-                .byDefault()
-                .register();
+    Pottery map(PotteryDTO potteryDTO);
 
-        mapperFactory.classMap(Quest.class, QuestDTO.class)
-                .byDefault()
-                .register();
+    PotteryDTO map(Pottery pottery);
 
-        mapperFactory.classMap(QuestDTO.class, Quest.class)
-                .byDefault()
-                .register();
+    Quest map(QuestDTO questDTO);
 
-        mapperFactory.classMap(ShootingClub.class, ShootingClubDTO.class)
-                .byDefault()
-                .register();
+    QuestDTO map(Quest quest);
 
-        mapperFactory.classMap(ShootingClubDTO.class, ShootingClub.class)
-                .byDefault()
-                .register();
+    ShootingClub map(ShootingClubDTO shootingClubDTO);
 
-        mapperFactory.classMap(VRClub.class, VRClubDTO.class)
-                .byDefault()
-                .register();
+    ShootingClubDTO map(ShootingClub shootingClub);
 
-        mapperFactory.classMap(VRClubDTO.class, VRClub.class)
-                .byDefault()
-                .register();
+    VRClub map(VRClubDTO vrClubDTO);
 
-        mapperFactory.classMap(WindTunnel.class, WindTunnelDTO.class)
-                .byDefault()
-                .register();
+    VRClubDTO map(VRClub vrClub);
 
-        mapperFactory.classMap(WindTunnelDTO.class, WindTunnel.class)
-                .byDefault()
-                .register();
+    WindTunnel map(WindTunnelDTO windTunnelDTO);
 
-        mapperFactory.classMap(Zoo.class, ZooDTO.class)
-                .byDefault()
-                .register();
+    WindTunnelDTO map(WindTunnel windTunnel);
 
-        mapperFactory.classMap(ZooDTO.class, Zoo.class)
-                .byDefault()
-                .register();
+    Zoo map(ZooDTO zooDTO);
 
-    }
-
+    ZooDTO map(Zoo zoo);
 }

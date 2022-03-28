@@ -37,7 +37,7 @@ public class PlanetariumController {
 
     @PostMapping("/api/planetarium")
     public ResponseEntity<PlanetariumDTO> createPlanetarium(@RequestBody PlanetariumDTO planetariumDTO, @RequestParam EntertainmentType entertainmentType) {
-        if (planetariumService.existsByName(planetariumDTO.getName())){
+        if (planetariumService.existsByName(planetariumDTO.getName())) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(planetariumService.createPlanetarium(planetariumDTO, entertainmentType), HttpStatus.CREATED);

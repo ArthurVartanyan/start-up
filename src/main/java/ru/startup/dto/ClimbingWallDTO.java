@@ -5,5 +5,5 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ClimbingWallDTO extends GeneralEntertainmentDTO{
+public class ClimbingWallDTO extends GeneralEntertainmentDTO {
 }

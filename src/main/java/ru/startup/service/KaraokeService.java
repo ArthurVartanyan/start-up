@@ -26,7 +26,7 @@ public class KaraokeService {
     }
 
     public KaraokeDTO getKaraokeById(Long id) {
-        return entertainmentMapper.map(karaokeRepository.getKaraokeByIdAndDeletedIsFalse(id), KaraokeDTO.class);
+        return entertainmentMapper.map(karaokeRepository.getKaraokeByIdAndDeletedIsFalse(id));
     }
 
     public void deleteKaraokeById(Long id) {
@@ -35,17 +35,17 @@ public class KaraokeService {
         karaokeRepository.save(karaoke);
     }
 
-    public boolean existsById(Long id){
+    public boolean existsById(Long id) {
         return karaokeRepository.existsById(id);
     }
 
-    public boolean existsByName(String name){
+    public boolean existsByName(String name) {
         return karaokeRepository.existsByNameAndDeletedIsFalse(name);
     }
 
     public KaraokeDTO createKaraoke(KaraokeDTO karaokeDTO, EntertainmentType entertainmentType) {
-        Karaoke karaoke = entertainmentMapper.map(karaokeDTO, Karaoke.class);
+        Karaoke karaoke = entertainmentMapper.map(karaokeDTO);
         karaoke.setEntertainmentType(entertainmentType);
-        return entertainmentMapper.map(karaokeRepository.save(karaoke), KaraokeDTO.class);
+        return entertainmentMapper.map(karaokeRepository.save(karaoke));
     }
 }

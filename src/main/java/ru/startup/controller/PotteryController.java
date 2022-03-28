@@ -37,7 +37,7 @@ public class PotteryController {
 
     @PostMapping("/api/pottery")
     public ResponseEntity<PotteryDTO> createPottery(@RequestBody PotteryDTO potteryDTO, @RequestParam EntertainmentType entertainmentType) {
-        if (potteryService.existsByName(potteryDTO.getName())){
+        if (potteryService.existsByName(potteryDTO.getName())) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(potteryService.createPottery(potteryDTO, entertainmentType), HttpStatus.CREATED);

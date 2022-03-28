@@ -26,7 +26,7 @@ public class ClimbingWallService {
     }
 
     public ClimbingWallDTO getClimbingWallById(Long id) {
-        return entertainmentMapper.map(climbingWallRepository.getClimbingWallByIdAndDeletedIsFalse(id), ClimbingWallDTO.class);
+        return entertainmentMapper.map(climbingWallRepository.getClimbingWallByIdAndDeletedIsFalse(id));
     }
 
     public void deleteClimbingWallById(Long id) {
@@ -35,17 +35,17 @@ public class ClimbingWallService {
         climbingWallRepository.save(climbingWall);
     }
 
-    public boolean existsById(Long id){
+    public boolean existsById(Long id) {
         return climbingWallRepository.existsById(id);
     }
 
-    public boolean existsByName(String name){
+    public boolean existsByName(String name) {
         return climbingWallRepository.existsByNameAndDeletedIsFalse(name);
     }
 
     public ClimbingWallDTO createClimbingWall(ClimbingWallDTO climbingWallDTO, EntertainmentType entertainmentType) {
-        ClimbingWall climbingWall = entertainmentMapper.map(climbingWallDTO, ClimbingWall.class);
+        ClimbingWall climbingWall = entertainmentMapper.map(climbingWallDTO);
         climbingWall.setEntertainmentType(entertainmentType);
-        return entertainmentMapper.map(climbingWallRepository.save(climbingWall), ClimbingWallDTO.class);
+        return entertainmentMapper.map(climbingWallRepository.save(climbingWall));
     }
 }

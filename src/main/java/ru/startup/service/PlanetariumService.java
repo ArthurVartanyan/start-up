@@ -26,7 +26,7 @@ public class PlanetariumService {
     }
 
     public PlanetariumDTO getPlanetariumById(Long id) {
-        return entertainmentMapper.map(planetariumRepository.getPlanetariumByIdAndDeletedIsFalse(id), PlanetariumDTO.class);
+        return entertainmentMapper.map(planetariumRepository.getPlanetariumByIdAndDeletedIsFalse(id));
     }
 
     public void deletePlanetariumById(Long id) {
@@ -35,17 +35,17 @@ public class PlanetariumService {
         planetariumRepository.save(planetarium);
     }
 
-    public boolean existsById(Long id){
+    public boolean existsById(Long id) {
         return planetariumRepository.existsById(id);
     }
 
-    public boolean existsByName(String name){
+    public boolean existsByName(String name) {
         return planetariumRepository.existsByNameAndDeletedIsFalse(name);
     }
 
     public PlanetariumDTO createPlanetarium(PlanetariumDTO planetariumDTO, EntertainmentType entertainmentType) {
-        Planetarium planetarium = entertainmentMapper.map(planetariumDTO, Planetarium.class);
+        Planetarium planetarium = entertainmentMapper.map(planetariumDTO);
         planetarium.setEntertainmentType(entertainmentType);
-        return entertainmentMapper.map(planetariumRepository.save(planetarium), PlanetariumDTO.class);
+        return entertainmentMapper.map(planetariumRepository.save(planetarium));
     }
 }

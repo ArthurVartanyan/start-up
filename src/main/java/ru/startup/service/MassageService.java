@@ -26,7 +26,7 @@ public class MassageService {
     }
 
     public MassageDTO getMassageById(Long id) {
-        return entertainmentMapper.map(massageRepository.getMassageByIdAndDeletedIsFalse(id), MassageDTO.class);
+        return entertainmentMapper.map(massageRepository.getMassageByIdAndDeletedIsFalse(id));
     }
 
     public void deleteMassageById(Long id) {
@@ -35,17 +35,17 @@ public class MassageService {
         massageRepository.save(massage);
     }
 
-    public boolean existsById(Long id){
+    public boolean existsById(Long id) {
         return massageRepository.existsById(id);
     }
 
-    public boolean existsByName(String name){
+    public boolean existsByName(String name) {
         return massageRepository.existsByNameAndDeletedIsFalse(name);
     }
 
     public MassageDTO createMassage(MassageDTO massageDTO, EntertainmentType entertainmentType) {
-        Massage massage = entertainmentMapper.map(massageDTO, Massage.class);
+        Massage massage = entertainmentMapper.map(massageDTO);
         massage.setEntertainmentType(entertainmentType);
-        return entertainmentMapper.map(massageRepository.save(massage), MassageDTO.class);
+        return entertainmentMapper.map(massageRepository.save(massage));
     }
 }

@@ -1,1 +1,2 @@
-alter table paintball alter column type TYPE varchar;
+alter table paintball
+    alter column type TYPE varchar;

@@ -26,7 +26,7 @@ public class WindTunnelService {
     }
 
     public WindTunnelDTO getWindTunnelById(Long id) {
-        return entertainmentMapper.map(windTunnelRepository.getWindTunnelByIdAndDeletedIsFalse(id), WindTunnelDTO.class);
+        return entertainmentMapper.map(windTunnelRepository.getWindTunnelByIdAndDeletedIsFalse(id));
     }
 
     public void deleteWindTunnelById(Long id) {
@@ -35,17 +35,17 @@ public class WindTunnelService {
         windTunnelRepository.save(windTunnel);
     }
 
-    public boolean existsById(Long id){
+    public boolean existsById(Long id) {
         return windTunnelRepository.existsById(id);
     }
 
-    public boolean existsByName(String name){
+    public boolean existsByName(String name) {
         return windTunnelRepository.existsByNameAndDeletedIsFalse(name);
     }
 
     public WindTunnelDTO createWindTunnel(WindTunnelDTO windTunnelDTO, EntertainmentType entertainmentType) {
-        WindTunnel windTunnel = entertainmentMapper.map(windTunnelDTO, WindTunnel.class);
+        WindTunnel windTunnel = entertainmentMapper.map(windTunnelDTO);
         windTunnel.setEntertainmentType(entertainmentType);
-        return entertainmentMapper.map(windTunnelRepository.save(windTunnel), WindTunnelDTO.class);
+        return entertainmentMapper.map(windTunnelRepository.save(windTunnel));
     }
 }

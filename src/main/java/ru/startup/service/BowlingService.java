@@ -26,7 +26,7 @@ public class BowlingService {
     }
 
     public BowlingDTO getBowlingById(Long id) {
-        return entertainmentMapper.map(bowlingRepository.getBowlingByIdAndDeletedIsFalse(id), BowlingDTO.class);
+        return entertainmentMapper.map(bowlingRepository.getBowlingByIdAndDeletedIsFalse(id));
     }
 
     public void deleteBowlingById(Long id) {
@@ -35,17 +35,17 @@ public class BowlingService {
         bowlingRepository.save(bowling);
     }
 
-    public boolean existsById(Long id){
+    public boolean existsById(Long id) {
         return bowlingRepository.existsById(id);
     }
 
-    public boolean existsByName(String name){
+    public boolean existsByName(String name) {
         return bowlingRepository.existsByNameAndDeletedIsFalse(name);
     }
 
     public BowlingDTO createBowling(BowlingDTO bowlingDTO, EntertainmentType entertainmentType) {
-        Bowling bowling = entertainmentMapper.map(bowlingDTO, Bowling.class);
+        Bowling bowling = entertainmentMapper.map(bowlingDTO);
         bowling.setEntertainmentType(entertainmentType);
-        return entertainmentMapper.map(bowlingRepository.save(bowling), BowlingDTO.class);
+        return entertainmentMapper.map(bowlingRepository.save(bowling));
     }
 }

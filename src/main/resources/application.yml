@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://database:5432/mesto-go
+    username: postgres
+    password: a7bgkKsr
+  jpa:
+    hibernate:
+      ddl-auto: validate

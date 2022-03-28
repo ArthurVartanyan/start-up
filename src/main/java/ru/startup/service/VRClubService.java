@@ -26,7 +26,7 @@ public class VRClubService {
     }
 
     public VRClubDTO getVRClubById(Long id) {
-        return entertainmentMapper.map(vrClubRepository.getVRClubByIdAndDeletedIsFalse(id), VRClubDTO.class);
+        return entertainmentMapper.map(vrClubRepository.getVRClubByIdAndDeletedIsFalse(id));
     }
 
     public void deleteVRClubById(Long id) {
@@ -35,17 +35,17 @@ public class VRClubService {
         vrClubRepository.save(vrClub);
     }
 
-    public boolean existsById(Long id){
+    public boolean existsById(Long id) {
         return vrClubRepository.existsById(id);
     }
 
-    public boolean existsByName(String name){
+    public boolean existsByName(String name) {
         return vrClubRepository.existsByNameAndDeletedIsFalse(name);
     }
 
     public VRClubDTO createVRClub(VRClubDTO questDTO, EntertainmentType entertainmentType) {
-        VRClub vrClub = entertainmentMapper.map(questDTO, VRClub.class);
+        VRClub vrClub = entertainmentMapper.map(questDTO);
         vrClub.setEntertainmentType(entertainmentType);
-        return entertainmentMapper.map(vrClubRepository.save(vrClub), VRClubDTO.class);
+        return entertainmentMapper.map(vrClubRepository.save(vrClub));
     }
 }

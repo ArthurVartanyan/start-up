@@ -1,6 +1,6 @@
 create table general_entertainment
 (
-    id                 bigserial      not null
+    id                 bigserial   not null
         constraint general_entertainment_pkey
             primary key,
     phone_number       varchar(12) not null
@@ -15,7 +15,7 @@ create table general_entertainment
 
 create table bath
 (
-    id   bigserial      not null
+    id   bigserial   not null
         constraint bath_pkey
             primary key
         constraint bath_id_fkey
@@ -25,13 +25,13 @@ create table bath
 
 create table billiards
 (
-    id          bigserial  not null
+    id          bigserial not null
         constraint billiards_pkey
             primary key
         constraint billiards_id_fkey
             references general_entertainment,
-    type        varchar not null,
-    table_count bytea   not null
+    type        varchar   not null,
+    table_count bytea     not null
 );
 
 create table bowling
@@ -41,8 +41,8 @@ create table bowling
             primary key
         constraint bowling_id_fkey
             references general_entertainment,
-    lanes_count bytea  not null,
-    lanes_limit bytea  not null
+    lanes_count bytea     not null,
+    lanes_limit bytea     not null
 );
 
 create table climbing_wall
@@ -74,17 +74,17 @@ create table karaoke
 
 create table massage
 (
-    id   bigserial  not null
+    id   bigserial not null
         constraint massage_pkey
             primary key
         constraint massage_id_fkey
             references general_entertainment,
-    type varchar not null
+    type varchar   not null
 );
 
 create table museum
 (
-    id    bigserial      not null
+    id    bigserial   not null
         constraint museum_pkey
             primary key
         constraint museum_id_fkey
@@ -94,12 +94,12 @@ create table museum
 
 create table paintball
 (
-    id   bigserial  not null
+    id   bigserial not null
         constraint paintball_pkey
             primary key
         constraint paintball_id_fkey
             references general_entertainment,
-    type boolean not null
+    type boolean   not null
 );
 
 create table planetarium
@@ -131,18 +131,18 @@ create table quest
 
 create table shooting_club
 (
-    id       bigserial  not null
+    id       bigserial not null
         constraint shooting_club_pkey
             primary key
         constraint shooting_club_id_fkey
             references general_entertainment,
-    firearms boolean not null,
-    airguns  boolean not null
+    firearms boolean   not null,
+    airguns  boolean   not null
 );
 
 create table weapon
 (
-    id   bigserial       not null
+    id   bigserial    not null
         constraint weapon_pkey
             primary key,
     name varchar(100) not null
@@ -170,12 +170,12 @@ create table vr_club
             primary key
         constraint vr_club_id_fkey
             references general_entertainment,
-    max_players_count bytea  not null
+    max_players_count bytea     not null
 );
 
 create table vr_game
 (
-    id   bigserial      not null
+    id   bigserial   not null
         constraint vr_game_pkey
             primary key,
     name varchar(40) not null

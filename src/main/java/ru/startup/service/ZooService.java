@@ -26,7 +26,7 @@ public class ZooService {
     }
 
     public ZooDTO getZooById(Long id) {
-        return entertainmentMapper.map(zooRepository.getZooByIdAndDeletedIsFalse(id), ZooDTO.class);
+        return entertainmentMapper.map(zooRepository.getZooByIdAndDeletedIsFalse(id));
     }
 
     public void deleteZooById(Long id) {
@@ -35,17 +35,17 @@ public class ZooService {
         zooRepository.save(zoo);
     }
 
-    public boolean existsById(Long id){
+    public boolean existsById(Long id) {
         return zooRepository.existsById(id);
     }
 
-    public boolean existsByName(String name){
+    public boolean existsByName(String name) {
         return zooRepository.existsByNameAndDeletedIsFalse(name);
     }
 
     public ZooDTO createZoo(ZooDTO zooDTO, EntertainmentType entertainmentType) {
-        Zoo zoo = entertainmentMapper.map(zooDTO, Zoo.class);
+        Zoo zoo = entertainmentMapper.map(zooDTO);
         zoo.setEntertainmentType(entertainmentType);
-        return entertainmentMapper.map(zooRepository.save(zoo), ZooDTO.class);
+        return entertainmentMapper.map(zooRepository.save(zoo));
     }
 }

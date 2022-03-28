@@ -26,7 +26,7 @@ public class QuestService {
     }
 
     public QuestDTO getQuestById(Long id) {
-        return entertainmentMapper.map(questRepository.getQuestByIdAndDeletedIsFalse(id), QuestDTO.class);
+        return entertainmentMapper.map(questRepository.getQuestByIdAndDeletedIsFalse(id));
     }
 
     public void deleteQuestById(Long id) {
@@ -35,17 +35,17 @@ public class QuestService {
         questRepository.save(quest);
     }
 
-    public boolean existsById(Long id){
+    public boolean existsById(Long id) {
         return questRepository.existsById(id);
     }
 
-    public boolean existsByName(String name){
+    public boolean existsByName(String name) {
         return questRepository.existsByNameAndDeletedIsFalse(name);
     }
 
     public QuestDTO createQuest(QuestDTO questDTO, EntertainmentType entertainmentType) {
-        Quest quest = entertainmentMapper.map(questDTO, Quest.class);
+        Quest quest = entertainmentMapper.map(questDTO);
         quest.setEntertainmentType(entertainmentType);
-        return entertainmentMapper.map(questRepository.save(quest), QuestDTO.class);
+        return entertainmentMapper.map(questRepository.save(quest));
     }
 }

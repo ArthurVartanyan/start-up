@@ -37,7 +37,7 @@ public class ExtremeController {
 
     @PostMapping("/api/extreme")
     public ResponseEntity<ExtremeDTO> createExtreme(@RequestBody ExtremeDTO extremeDTO, @RequestParam EntertainmentType entertainmentType) {
-        if (extremeService.existsByName(extremeDTO.getName())){
+        if (extremeService.existsByName(extremeDTO.getName())) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(extremeService.createExtreme(extremeDTO, entertainmentType), HttpStatus.CREATED);

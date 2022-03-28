@@ -26,7 +26,7 @@ public class BilliardsService {
     }
 
     public BilliardsDTO getBilliardsById(Long id) {
-        return entertainmentMapper.map(billiardsRepository.getBilliardsByIdAndDeletedIsFalse(id), BilliardsDTO.class);
+        return entertainmentMapper.map(billiardsRepository.getBilliardsByIdAndDeletedIsFalse(id));
     }
 
     public void deleteBilliardsById(Long id) {
@@ -35,17 +35,17 @@ public class BilliardsService {
         billiardsRepository.save(billiards);
     }
 
-    public boolean existsById(Long id){
+    public boolean existsById(Long id) {
         return billiardsRepository.existsById(id);
     }
 
-    public boolean existsByName(String name){
+    public boolean existsByName(String name) {
         return billiardsRepository.existsByNameAndDeletedIsFalse(name);
     }
 
     public BilliardsDTO createBilliards(BilliardsDTO billiardsDTO, EntertainmentType entertainmentType) {
-        Billiards billiards = entertainmentMapper.map(billiardsDTO, Billiards.class);
+        Billiards billiards = entertainmentMapper.map(billiardsDTO);
         billiards.setEntertainmentType(entertainmentType);
-        return entertainmentMapper.map(billiardsRepository.save(billiards), BilliardsDTO.class);
+        return entertainmentMapper.map(billiardsRepository.save(billiards));
     }
 }

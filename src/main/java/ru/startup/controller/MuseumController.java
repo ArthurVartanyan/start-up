@@ -37,7 +37,7 @@ public class MuseumController {
 
     @PostMapping("/api/museum")
     public ResponseEntity<MuseumDTO> createMuseum(@RequestBody MuseumDTO museumDTO, @RequestParam EntertainmentType entertainmentType) {
-        if (museumService.existsByName(museumDTO.getName())){
+        if (museumService.existsByName(museumDTO.getName())) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(museumService.createMuseum(museumDTO, entertainmentType), HttpStatus.CREATED);

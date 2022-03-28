@@ -26,7 +26,7 @@ public class MuseumService {
     }
 
     public MuseumDTO getMuseumById(Long id) {
-        return entertainmentMapper.map(museumRepository.getMuseumByIdAndDeletedIsFalse(id), MuseumDTO.class);
+        return entertainmentMapper.map(museumRepository.getMuseumByIdAndDeletedIsFalse(id));
     }
 
     public void deleteMuseumById(Long id) {
@@ -35,17 +35,17 @@ public class MuseumService {
         museumRepository.save(museum);
     }
 
-    public boolean existsById(Long id){
+    public boolean existsById(Long id) {
         return museumRepository.existsById(id);
     }
 
-    public boolean existsByName(String name){
+    public boolean existsByName(String name) {
         return museumRepository.existsByNameAndDeletedIsFalse(name);
     }
 
     public MuseumDTO createMuseum(MuseumDTO museumDTO, EntertainmentType entertainmentType) {
-        Museum museum = entertainmentMapper.map(museumDTO, Museum.class);
+        Museum museum = entertainmentMapper.map(museumDTO);
         museum.setEntertainmentType(entertainmentType);
-        return entertainmentMapper.map(museumRepository.save(museum), MuseumDTO.class);
+        return entertainmentMapper.map(museumRepository.save(museum));
     }
 }

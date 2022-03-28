@@ -26,7 +26,7 @@ public class PotteryService {
     }
 
     public PotteryDTO getPotteryById(Long id) {
-        return entertainmentMapper.map(potteryRepository.getPotteryByIdAndDeletedIsFalse(id), PotteryDTO.class);
+        return entertainmentMapper.map(potteryRepository.getPotteryByIdAndDeletedIsFalse(id));
     }
 
     public void deletePotteryById(Long id) {
@@ -35,17 +35,17 @@ public class PotteryService {
         potteryRepository.save(pottery);
     }
 
-    public boolean existsById(Long id){
+    public boolean existsById(Long id) {
         return potteryRepository.existsById(id);
     }
 
-    public boolean existsByName(String name){
+    public boolean existsByName(String name) {
         return potteryRepository.existsByNameAndDeletedIsFalse(name);
     }
 
     public PotteryDTO createPottery(PotteryDTO potteryDTO, EntertainmentType entertainmentType) {
-        Pottery pottery = entertainmentMapper.map(potteryDTO, Pottery.class);
+        Pottery pottery = entertainmentMapper.map(potteryDTO);
         pottery.setEntertainmentType(entertainmentType);
-        return entertainmentMapper.map(potteryRepository.save(pottery), PotteryDTO.class);
+        return entertainmentMapper.map(potteryRepository.save(pottery));
     }
 }

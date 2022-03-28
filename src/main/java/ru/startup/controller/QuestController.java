@@ -37,7 +37,7 @@ public class QuestController {
 
     @PostMapping("/api/quest")
     public ResponseEntity<QuestDTO> createPottery(@RequestBody QuestDTO questDTO, @RequestParam EntertainmentType entertainmentType) {
-        if (questService.existsByName(questDTO.getName())){
+        if (questService.existsByName(questDTO.getName())) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(questService.createQuest(questDTO, entertainmentType), HttpStatus.CREATED);

@@ -26,7 +26,7 @@ public class ExtremeService {
     }
 
     public ExtremeDTO getExtremeById(Long id) {
-        return entertainmentMapper.map(extremeRepository.getExtremeByIdAndDeletedIsFalse(id), ExtremeDTO.class);
+        return entertainmentMapper.map(extremeRepository.getExtremeByIdAndDeletedIsFalse(id));
     }
 
     public void deleteExtremeById(Long id) {
@@ -35,17 +35,17 @@ public class ExtremeService {
         extremeRepository.save(extreme);
     }
 
-    public boolean existsById(Long id){
+    public boolean existsById(Long id) {
         return extremeRepository.existsById(id);
     }
 
-    public boolean existsByName(String name){
+    public boolean existsByName(String name) {
         return extremeRepository.existsByNameAndDeletedIsFalse(name);
     }
 
     public ExtremeDTO createExtreme(ExtremeDTO extremeDTO, EntertainmentType entertainmentType) {
-        Extreme extreme = entertainmentMapper.map(extremeDTO, Extreme.class);
+        Extreme extreme = entertainmentMapper.map(extremeDTO);
         extreme.setEntertainmentType(entertainmentType);
-        return entertainmentMapper.map(extremeRepository.save(extreme), ExtremeDTO.class);
+        return entertainmentMapper.map(extremeRepository.save(extreme));
     }
 }

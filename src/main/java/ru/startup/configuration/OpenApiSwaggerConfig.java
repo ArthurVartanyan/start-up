@@ -10,6 +10,6 @@ public class OpenApiSwaggerConfig {
     @Bean
     public OpenAPI springShopOpenAPI() {
         return new OpenAPI()
-                .info(new Info().title("Start-up API"));
+                .info(new Info().title("MestoGo API"));
     }
 }

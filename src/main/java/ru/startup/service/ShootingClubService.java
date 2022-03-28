@@ -26,7 +26,7 @@ public class ShootingClubService {
     }
 
     public ShootingClubDTO getShootingClubById(Long id) {
-        return entertainmentMapper.map(shootingClubRepository.getShootingClubByIdAndDeletedIsFalse(id), ShootingClubDTO.class);
+        return entertainmentMapper.map(shootingClubRepository.getShootingClubByIdAndDeletedIsFalse(id));
     }
 
     public void deleteShootingClubById(Long id) {
@@ -35,17 +35,17 @@ public class ShootingClubService {
         shootingClubRepository.save(shootingClub);
     }
 
-    public boolean existsById(Long id){
+    public boolean existsById(Long id) {
         return shootingClubRepository.existsById(id);
     }
 
-    public boolean existsByName(String name){
+    public boolean existsByName(String name) {
         return shootingClubRepository.existsByNameAndDeletedIsFalse(name);
     }
 
     public ShootingClubDTO createShootingClub(ShootingClubDTO shootingClubDTO, EntertainmentType entertainmentType) {
-        ShootingClub shootingClub = entertainmentMapper.map(shootingClubDTO, ShootingClub.class);
+        ShootingClub shootingClub = entertainmentMapper.map(shootingClubDTO);
         shootingClub.setEntertainmentType(entertainmentType);
-        return entertainmentMapper.map(shootingClubRepository.save(shootingClub), ShootingClubDTO.class);
+        return entertainmentMapper.map(shootingClubRepository.save(shootingClub));
     }
 }

@@ -37,7 +37,7 @@ public class VRClub {
 
     @PostMapping("/api/vr-club")
     public ResponseEntity<VRClubDTO> createVRClub(@RequestBody VRClubDTO vrClubDTO, @RequestParam EntertainmentType entertainmentType) {
-        if (vrClubService.existsByName(vrClubDTO.getName())){
+        if (vrClubService.existsByName(vrClubDTO.getName())) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(vrClubService.createVRClub(vrClubDTO, entertainmentType), HttpStatus.CREATED);

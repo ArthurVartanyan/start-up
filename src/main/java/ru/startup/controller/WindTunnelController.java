@@ -37,7 +37,7 @@ public class WindTunnelController {
 
     @PostMapping("/api/wind-tunnel")
     public ResponseEntity<WindTunnelDTO> createWindTunnel(@RequestBody WindTunnelDTO windTunnelDTO, @RequestParam EntertainmentType entertainmentType) {
-        if (windTunnelService.existsByName(windTunnelDTO.getName())){
+        if (windTunnelService.existsByName(windTunnelDTO.getName())) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(windTunnelService.createWindTunnel(windTunnelDTO, entertainmentType), HttpStatus.CREATED);

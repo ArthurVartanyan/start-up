@@ -37,7 +37,7 @@ public class ShootingClubController {
 
     @PostMapping("/api/shooting-club")
     public ResponseEntity<ShootingClubDTO> createShootingClub(@RequestBody ShootingClubDTO shootingClubDTO, @RequestParam EntertainmentType entertainmentType) {
-        if (shootingClubService.existsByName(shootingClubDTO.getName())){
+        if (shootingClubService.existsByName(shootingClubDTO.getName())) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(shootingClubService.createShootingClub(shootingClubDTO, entertainmentType), HttpStatus.CREATED);

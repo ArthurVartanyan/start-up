@@ -26,7 +26,7 @@ public class PaintballService {
     }
 
     public PaintballDTO getPaintballById(Long id) {
-        return entertainmentMapper.map(paintballRepository.getPaintballByIdAndDeletedIsFalse(id), PaintballDTO.class);
+        return entertainmentMapper.map(paintballRepository.getPaintballByIdAndDeletedIsFalse(id));
     }
 
     public void deletePaintballById(Long id) {
@@ -35,17 +35,17 @@ public class PaintballService {
         paintballRepository.save(paintball);
     }
 
-    public boolean existsById(Long id){
+    public boolean existsById(Long id) {
         return paintballRepository.existsById(id);
     }
 
-    public boolean existsByName(String name){
+    public boolean existsByName(String name) {
         return paintballRepository.existsByNameAndDeletedIsFalse(name);
     }
 
     public PaintballDTO createPaintball(PaintballDTO paintballDTO, EntertainmentType entertainmentType) {
-        Paintball paintball = entertainmentMapper.map(paintballDTO, Paintball.class);
+        Paintball paintball = entertainmentMapper.map(paintballDTO);
         paintball.setEntertainmentType(entertainmentType);
-        return entertainmentMapper.map(paintballRepository.save(paintball), PaintballDTO.class);
+        return entertainmentMapper.map(paintballRepository.save(paintball));
     }
 }

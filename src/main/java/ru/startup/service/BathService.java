@@ -26,7 +26,7 @@ public class BathService {
     }
 
     public BathDTO getBathById(Long id) {
-        return entertainmentMapper.map(bathRepository.getBathByIdAndDeletedIsFalse(id), BathDTO.class);
+        return entertainmentMapper.map(bathRepository.getBathByIdAndDeletedIsFalse(id));
     }
 
     public void deleteBathById(Long id) {
@@ -35,16 +35,17 @@ public class BathService {
         bathRepository.save(bath);
     }
 
-    public boolean existsById(Long id){
+    public boolean existsById(Long id) {
         return bathRepository.existsById(id);
     }
 
-    public boolean existsByName(String name){
+    public boolean existsByName(String name) {
         return bathRepository.existsByNameAndDeletedIsFalse(name);
     }
+
     public BathDTO createBath(BathDTO bathDTO, EntertainmentType entertainmentType) {
-        Bath bath = entertainmentMapper.map(bathDTO, Bath.class);
+        Bath bath = entertainmentMapper.map(bathDTO);
         bath.setEntertainmentType(entertainmentType);
-        return entertainmentMapper.map(bathRepository.save(bath), BathDTO.class);
+        return entertainmentMapper.map(bathRepository.save(bath));
     }
 }
