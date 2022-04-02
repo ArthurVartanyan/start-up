@@ -1,4 +1,4 @@
-ALTER SEQUENCE billiards_id_seq RESTART WITH 1;
+ALTER SEQUENCE billiard_id_seq RESTART WITH 1;
 ALTER SEQUENCE bowling_id_seq RESTART WITH 1;
 ALTER SEQUENCE climbing_wall_id_seq RESTART WITH 1;
 ALTER SEQUENCE extreme_id_seq RESTART WITH 1;
@@ -35,9 +35,9 @@ values ('+79432433508', 'Понедельник-пятница', '08:00:00', '20
 insert into general_entertainment(phone_number, shift_name, start_at, end_at, entertainment_type, price, deleted, name)
 values ('+79432433433', 'Суббота-воскресенье', '08:00:00', '14:00:00', 'BILLIARDS', '2 час 100р/чел.', false,
         'Американский');
-insert into billiards(id, type, table_count)
+insert into billiard(id, type, table_count)
 values (3, 'RUSSIAN', 10);
-insert into billiards(id, type, table_count)
+insert into billiard(id, type, table_count)
 values (4, 'AMERICAN', 5);
 
 insert into general_entertainment(phone_number, shift_name, start_at, end_at, entertainment_type, price, deleted, name)

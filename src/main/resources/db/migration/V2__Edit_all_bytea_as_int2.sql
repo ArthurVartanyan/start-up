@@ -1,4 +1,4 @@
-alter table billiards
+alter table billiard
     drop column table_count;
 alter table bowling
     drop column lanes_count;
@@ -7,7 +7,7 @@ alter table bowling
 alter table vr_club
     drop column max_players_count;
 
-alter table billiards
+alter table billiard
     add column table_count smallint;
 alter table bowling
     add column lanes_count smallint;

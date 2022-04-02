@@ -23,12 +23,12 @@ create table bath
     type varchar(20) not null
 );
 
-create table billiards
+create table billiard
 (
     id          bigserial not null
-        constraint billiards_pkey
+        constraint billiard_pkey
             primary key
-        constraint billiards_id_fkey
+        constraint billiard_id_fkey
             references general_entertainment,
     type        varchar   not null,
     table_count bytea     not null

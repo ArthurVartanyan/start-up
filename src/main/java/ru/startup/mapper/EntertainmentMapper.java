@@ -2,7 +2,7 @@ package ru.startup.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
-import ru.startup.dto.*;
+import ru.startup.dto.entertainment.*;
 import ru.startup.model.entertainment.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
@@ -12,9 +12,9 @@ public interface EntertainmentMapper {
 
     BathDTO map(Bath bath);
 
-    Billiards map(BilliardsDTO billiardsDTO);
+    Billiard map(BilliardDTO billiardDTO);
 
-    BilliardsDTO map(Billiards billiards);
+    BilliardDTO map(Billiard billiard);
 
     Bowling map(BowlingDTO bowlingDTO);
 
