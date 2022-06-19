@@ -25,9 +25,9 @@ insert into general_entertainment(phone_number, shift_name, start_at, end_at, en
 values ('+79432222223', 'Суббота-воскресенье', '11:00:00', '14:00:00', 'BATH', '4 час 400р/чел.', false,
         'Американский пар');
 insert into bath(id, type)
-values (1, 'BATH');
+values (1, 'RUSSIAN');
 insert into bath(id, type)
-values (2, 'BATH');
+values (2, 'RUSSIAN');
 
 insert into general_entertainment(phone_number, shift_name, start_at, end_at, entertainment_type, price, deleted, name)
 values ('+79432433508', 'Понедельник-пятница', '08:00:00', '20:00:00', 'BILLIARDS', '1 час 300р/чел.', false,
