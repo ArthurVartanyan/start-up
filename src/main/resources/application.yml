@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://database:5432/mesto-go
+    url: jdbc:postgresql://localhost:5432/mestogo
     username: postgres
     password: a7bgkKsr
   jpa:

@@ -19,7 +19,6 @@ public class YouthHostel {
     @Column(name = "name", nullable = false, length = 40)
     private String name;
 
-    @Lob
     @Column(name = "about", nullable = false)
     private String about;
 
@@ -29,7 +28,6 @@ public class YouthHostel {
     @Column(name = "email", nullable = false, length = 30)
     private String email;
 
-    @Lob
     @Column(name = "price", nullable = false)
     private String price;
 
